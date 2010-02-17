@@ -1,28 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
     <title>BSON - Binary JSON</title>
+    <link rel="stylesheet" href="css/reset-fonts-grids.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.4.1.min.js"/>
+    <script type="text/javascript" src="js/jquery.address-1.1.min.js"/>
+    <script type="text/javascript" src="js/bsonspec.js"/>
   </head>
   <body>
-    <div id="header">
-    </div>
-    <div id="main">
-      <p>
-        <abbr title="Binary
-        JSON">BSON</abbr> <span class="pronounce">(bee &middot;
-        sun)</span>, short for
-        Binary <a href="http://json.org"><abbr title="JavaScript
-        Object Notation">JSON</abbr></a>, is a binary-encoded
-        serialization of JSON-like documents. Like JSON, BSON supports
-        the embedding of documents and arrays within other documents
-        and arrays.
-      </p>
-      <p>
-        BSON is designed to be lightweight, easily traversable, and
-        efficient to encode and decode. It is an open format that is
-        applicable to wide range of data-marshalling problems.
-      </p>
-    </div>
-    <div id="footer">
+    <div id="doc" class="yui-t7">
+      <div id="hd" role="banner">
+        <h1>BSON</h1>
+        <div id="graphic">
+          <div id="right-brace" class="brace">}</div>
+          <div id="bits">
+            01101101<br/>
+            01101001<br/>
+            01101011<br/>
+            01100101
+          </div>
+          <div id="left-brace" class="brace">{</div>
+        </div>
+      </div>
+      <div id="bd" role="main">
+        <div class="yui-g">
+          <div class="yui-u first">
+            <p>
+              <abbr title="Binary
+              JSON">BSON</abbr> <span class="pronounce">[bee &middot;
+              sun]</span>, short for
+              Binary <a href="http://json.org"><abbr title="JavaScript
+              Object Notation">JSON</abbr></a>, is a binary-encoded
+              serialization of JSON-like documents. Like JSON, BSON
+              supports the embedding of documents and arrays within
+              other documents and arrays. BSON contains extensions
+              that allow representation of data types that are not
+              part of the JSON spec. For example, BSON has a Date type
+              and a BinData type.
+            </p>
+          </div>
+          <div class="yui-u">
+            <p>
+              BSON is designed to be lightweight, easily traversable,
+              and efficient to encode and decode. It is an open format
+              that is applicable to wide range of data-marshalling
+              problems. The key advantage over XML and JSON is
+              efficiency (both in terms of space and compute time).
+            </p>
+            <p>
+              BSON can be compared to binary interchange formats, such
+              as <a href="http://code.google.com/p/protobuf/">Protocol
+              Buffers</a>. BSON is more "schema-less" than Protocol
+              Buffers, which can give it an advantage in flexibility
+              but also a slight disadvantage in space efficiency (BSON
+              has overhead for field names within the serialized
+              data).
+            </p>
+          </div>
+        </div>
+        <div class="yui-gb" id="buttons">
+          <a href="specification" rel="address:specification">
+            <div class="yui-u first button">specification</div>
+          </a>
+          <a href="implementation" rel="address:implementation">
+            <div class="yui-u button">implementation</div>
+          </a>
+          <a href="discussion" rel="address:discussion">
+            <div class="yui-u button">discussion</div>
+          </a>
+        </div>
+        <div class="yui-g">
+          <div class="info" id="spec">
+
+            <pre>
+bson_object ::= obj_size element_list eoo
+
+obj_size ::= int32
+
+element_list ::= element element_list | ""
+
+element ::= "\x01" element_name double                 // Double precision floating point
+          | "\x02" element_name data_string            // UTF-8 string
+          | "\x03" element_name bson_object            // Embedded document
+          | "\x04" element_name bson_object            // Array (see note)
+          | "\x05" element_name data_binary            // Binary data
+          | "\x06" element_name                        // Undefined value - Deprecated
+          | "\x07" element_name byte[12]               // ObjectId
+          | "\x08" element_name "\x00"                 // Boolean "false"
+          | "\x08" element_name "\x01"                 // Boolean "true"
+          | "\x09" element_name int64                  // UTC Date as milliseconds since epoch
+          | "\x0A" element_name                        // Null value
+          | "\x0B" element_name cstring cstring        // Regular expression (see note)
+          | "\x0C" element_name int32 cstring byte[12] // Ref - Deprecated
+          | "\x0D" element_name data_string
+          | "\x0E" element_name data_string
+          | "\x0F" element_name data_string
+          | "\x10" element_name data_string
+          | "\x11" element_name data_string
+          | "\x12" element_name data_string
+
+eoo ::= "\x00"
+            </pre>
+          </div>
+          <div class="info" id="contrib">
+            <p>
+              Currently, we're just using
+              the <a href="http://groups.google.com/group/mongodb-dev">MongoDB
+              Dev list</a> for BSON related discussion. Feel free to
+              post there if you have any questions or comments. If
+              list traffic gets high enough we'll create a separate
+              BSON-specific mailing list.
+            </p>
+            <p>
+              This website is open-source and contributions (to the
+              content or design) are welcome. To contribute,
+              fork <a href="">the project</a> and send us a pull
+              request.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="ft" role="contentinfo"><p>Footer</p></div>
     </div>
   </body>
 </html>

@@ -1,0 +1,51 @@
+#hd {
+    height: 9em;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid black;
+}
+#hd h1 {
+    font-size: 1100%;
+    display: inline;
+}
+#hd .brace {
+    font-family: verdana;
+    font-size: 800%;
+    margin-bottom: 2em;
+}
+#hd #graphic {
+    position: absolute;
+    top: -1em;
+    right: 8em;
+}
+#hd #left-brace {
+    float: right;
+    text-align: right;
+}
+#hd #bits {
+    font-family: monospace;
+    font-size: 170%;
+    margin-top: 0.9em;
+    float: right;
+}
+#hd #right-brace {
+    float: right;
+}
+div.button {
+    text-align: center;
+    background-color: #CCDDFF;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 200%;
+    text-decoration: none !important;
+    color: black;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+}
+#buttons {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+#ft {
+    border-top: 3px solid black;
+}

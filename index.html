@@ -100,7 +100,81 @@ eoo ::= "\x00"
           </div>
           <div class="info" id="lib">
             <p>
-              Implementations of the BSON specification
+              Implementations of the BSON specification exist for many
+              different languages / environments. Some implementations
+              are currently embedded
+              within <a href="http://www.mongodb.org">MongoDB</a>
+              drivers, since MongoDB was the first large project to
+              make use of BSON. Over time those libraries will be made
+              more stand-alone, but they should be usable
+              independently of MongoDB in their current state.
+            </p>
+            <div class="col" id="col1">
+              <h3>BSON Libraries</h3>
+              <ul>
+                <li>
+                  <p><a href="http://github.com/mongodb/mongo-c-driver/tree/master/src/">C</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/samus/mongodb-csharp/tree/master/MongoDBDriver/Bson/">C#</a> or <a href="http://james.newtonking.com/archive/2009/12/26/json-net-3-5-release-6-binary-json-bson-support.aspx">Json.NET</a></p>
+                </li>
+                <li>
+                  <p><a href="http://api.mongodb.org/cplusplus/current/classmongo_1_1_b_s_o_n_obj.html">C++</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/JacobVorreuter/emongo/blob/master/src/emongo_bson.erl">Erlang</a> or <a href="http://github.com/wpntv/erlmongo/blob/master/mongodb.erl">Erlang</a></p>
+                </li>
+                <li>
+                  <p><a href="http://bitbucket.org/liamstask/fantomongo/src/tip/fan/bson/">Fantom</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/mikejs/gomongo">Go</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/srp/mongoDB/blob/master/Database/MongoDB/BSON.hs">Haskell</a></p>
+                </li>
+                <li>
+                  <p><a href="http://api.mongodb.org/java/current/com/mongodb/RawDBObject.html">Java</a></p>
+                </li>
+                <li>
+                  <p><a href="http://api.mongodb.org/perl/MongoDB/BSON.html">Perl</a></p>
+                </li>
+                <li>
+                  <p><a href="http://us3.php.net/manual/en/ref.mongo.php">PHP</a>
+                  &mdash; the bson_decode and bson_encode functions in
+                  the MongoDB PECL extension decode and encode BSON
+                  data, respectively.</p>
+                </li>
+                <li>
+                  <p><a href="http://api.mongodb.org/python/current/api/pymongo/bson.html">Python</a>
+                  &mdash; PyMongo contains a BSON implementation for
+                  Python, as both a pure Python module and a C
+                  extension.</p>
+                </li>
+                <li>
+                  <p><a href="http://api.mongodb.org/ruby/current/BSON_RUBY.html">Ruby</a>
+                  &mdash; the MongoDB Ruby driver contains both a pure
+                  Ruby and C implementation of BSON.</p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/mdirolf/mlmongo/blob/master/bson.sml">Standard ML (SML)</a></p>
+                </li>
+              </ul>
+            </div>
+            <div class="col" id="col2">
+              <h3>Projects Using BSON</h3>
+              <ul>
+                <li>
+                  <p><a href="http://www.mongodb.org">MongoDB</a>, the
+                    document-oriented database, uses BSON as both the
+                    network and on-disk representation of
+                    documents.</p>
+                </li>
+              </ul>
+            </div>
+            <p class="clear">
+              If you know of other BSON implementations or projects
+              using BSON, please add them here.
             </p>
           </div>
           <div class="info" id="contrib">

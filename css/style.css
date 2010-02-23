@@ -83,10 +83,38 @@ div.button a:active {
     margin-left: 0.1em;
     margin-top: 0.1em;
 }
+ul li {
+    list-style-type: disc;
+}
+h3 {
+    font-family: verdana;
+    font-weight: bold;
+    font-style: normal;
+}
+div.col h3 {
+    font-size: 128.5%;
+    padding-top: 1em;
+}
+div.col {
+    margin-left: 3%;
+    margin-bottom: 1.5em;
+    width: 47%;
+    display: inline;
+}
+div#col1 {
+    float: left;
+}
+div#col1 p {
+    margin-top: 0.5em;
+}
+div#col2 {
+    float: right;
+}
+.clear {
+    clear: both;
+}
 .info p {
     margin-top: 1em;
-}
-#contrib {
     font-family: georgia;
     font-size: 138.5%;
 }
@@ -134,11 +162,6 @@ ol li {
 div.intro li p {
     margin-top: 0.5em;
     font-size: 100%;
-    font-style: normal;
-}
-ol li h3 {
-    font-family: verdana;
-    font-weight: bold;
     font-style: normal;
 }
 #ft a {

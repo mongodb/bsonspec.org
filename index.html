@@ -27,11 +27,25 @@
       <div id="bd" role="main">
         <div class="yui-g intro">
           <div class="yui-u first">
-            <p><abbr title="Binary JSON">BSON</abbr> <span class="pronounce">[bee &middot; sun]</span>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
+            <p><abbr title="Binary JSON">BSON</abbr> <span class="pronounce">[bee &middot; sun]</span>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON also con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
             <p>BSON can be com&shy;pared to bin&shy;ary inter&shy;change for&shy;mats, like <a href="http://code.google.com/p/protobuf/">Proto&shy;col Buf&shy;fers</a>. BSON is more "schema-less" than Proto&shy;col Buf&shy;fers, which can give it an ad&shy;vant&shy;age in flex&shy;ib&shy;il&shy;ity but also a slight dis&shy;ad&shy;vant&shy;age in space ef&shy;fi&shy;ciency (BSON has over&shy;head for field names with&shy;in the seri&shy;al&shy;ized data).</p>
           </div>
           <div class="yui-u">
-            <p>BSON is designed to be lightweight, easily traversable, and efficient to encode and decode. It is an open format that is applicable to wide range of data-marshalling problems. The key advantage over XML and JSON is efficiency (both in terms of space and compute time).</p>
+            <p>BSON was designed to have the following three characteristics:</p>
+            <ol>
+              <li>
+                <h3>Lightweight</h3>
+                <p>Keeping spatial overhead to a minimum is important for any data representation format, especially one that is intended to be used over the network.</p>
+              </li>
+              <li>
+                <h3>Traversable</h3>
+                <p>BSON is designed to be traversed easily. This is a vital property in its role as the primary data representation for <a href="http://www.mongodb.org">MongoDB</a>.</p>
+              </li>
+              <li>
+                <h3>Efficient</h3>
+                <p>Encoding data to BSON and decoding from BSON can be performed very quickly in most languages due to the use of C data types.</p>
+              </li>
+            </ol>
           </div>
         </div>
         <div class="yui-gb" id="buttons">
@@ -103,15 +117,18 @@ eoo ::= "\x00"
         </div>
       </div>
       <div id="ft" role="contentinfo">
-        <div class="yui-g">
-          <p>bsonspec.org is</p>
+        <div class="yui-gb">
           <div class="yui-u first 10gen">
-            <p>sponsored by</p>
-            <a href="http://www.10gen.com" id="logo"><span>10gen</span></a>
+            <a href="http://www.10gen.com" id="logo" class="ro"><span>10gen</span></a>
           </div>
           <div class="yui-u">
-            <p>remixable</p>
-            <a href="
+            <p><a href="http://bsonspec.org">bsonspec.org</a> is:<br/>
+            &larr; sponsored by<br/>
+            licensed under &rarr;<br/>
+            &copy; 2010 <a href="http://www.10gen.com">10gen, Inc.</a></p>
+          </div>
+          <div class="yui-u">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" id="cc" class="ro"><span>Creative Commons</span></a>
           </div>
         </div>
       </div>

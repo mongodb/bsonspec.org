@@ -103,17 +103,44 @@ div.button a:active {
     text-align: center;
     padding-bottom: 1em;
 }
-a#logo {
+a.ro {
+    background-repeat: no-repeat;
+    background-position: 0 0;
     margin-left: auto;
     margin-right: auto;
-    background: url(../images/10gen.png) no-repeat 0 0;
     display: block;
     width: 150px;
     height: 70px;
 }
-a#logo:hover {
+a.ro:hover {
     background-position: 0 -70px;
 }
-a#logo span {
+a.ro span {
     display: none;
+}
+a#cc {
+    background-image: url(../images/cc.png)
+}
+a#logo {
+    background-image: url(../images/10gen.png)
+}
+ol li {
+    font-size: 123.1%;
+    list-style-type: decimal;
+    margin-left: 2em;
+    margin-top: 1em;
+    font-style: italic;
+}
+div.intro li p {
+    margin-top: 0.5em;
+    font-size: 100%;
+    font-style: normal;
+}
+ol li h3 {
+    font-family: verdana;
+    font-weight: bold;
+    font-style: normal;
+}
+#ft a {
+    color: black;
 }

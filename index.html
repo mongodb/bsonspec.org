@@ -67,6 +67,12 @@
         </div>
         <div class="yui-g">
           <div class="info" id="spec">
+            <h3>Version 1.0</h3>
+            <p>The following document specifies version 1.0 of the
+            BSON standard. We've written the document using a
+            pseudo-<a href="http://en.wikipedia.org/wiki/Backus–Naur_Form">BNF</a>
+            syntax. Valid BSON data is represented by
+            the <code>bson_object</code> non-terminal.</p>
 
             <pre>
 bson_object ::= obj_size element_list eoo
@@ -174,16 +180,16 @@ eoo ::= "\x00"
             </div>
             <p class="clear">
               If you know of other BSON implementations or projects
-              using BSON, please add them here.
+              using BSON, please <a href="http://github.com/mdirolf/bsonspec.org">add them</a>.
             </p>
           </div>
           <div class="info" id="contrib">
             <p>
               Currently, we're just using
-              the <a href="http://groups.google.com/group/mongodb-dev">MongoDB
-              Dev list</a> for BSON related discussion. Feel free to
-              post there if you have any questions or comments. If
-              list traffic gets high enough we'll create a separate
+              the <a href="http://groups.google.com/group/mongodb-dev">MongoDB-Dev
+              list</a> for BSON related discussion. Feel free to post
+              there if you have any questions or comments. If list
+              traffic gets high enough we'll create a separate
               BSON-specific mailing list.
             </p>
             <p>

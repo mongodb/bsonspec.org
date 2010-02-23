@@ -1,3 +1,12 @@
+div.intro p {
+    font-family: georgia;
+    font-size: 138.5%;
+    margin-top: 1.5em;
+    text-align: justify;
+}
+.pronounce {
+    font-style: italic;
+}
 #hd {
     height: 9em;
     position: relative;
@@ -7,6 +16,10 @@
 #hd h1 {
     font-size: 1100%;
     display: inline;
+}
+#hd h1 a {
+    text-decoration: none;
+    color: black;
 }
 #hd .brace {
     font-family: verdana;
@@ -28,19 +41,54 @@
     margin-top: 0.9em;
     float: right;
 }
+#egg {
+    text-decoration: none;
+    color: black;
+    cursor: text;
+}
 #hd #right-brace {
     float: right;
 }
 div.button {
     text-align: center;
-    background-color: #CCDDFF;
     padding-top: 1em;
-    padding-bottom: 1em;
     font-size: 200%;
-    text-decoration: none !important;
     color: black;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
+}
+div.button a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    margin: 0em;
+}
+div.button a.selected {
+    -webkit-box-shadow: 0.15em 0.15em 0 #000;
+    -moz-box-shadow: 0.15em 0.15em 0 #000;
+    margin-left: -0.15em;
+    margin-top: -0.15em;
+}
+div.button a:hover {
+    -webkit-box-shadow: 0.15em 0.15em 0 #000;
+    -moz-box-shadow: 0.15em 0.15em 0 #000;
+    margin-left: -0.15em;
+    margin-top: -0.15em;
+}
+div.button a:active {
+    -webkit-box-shadow: -0.1em -0.1em 0 #000;
+    -moz-box-shadow: -0.1em -0.1em 0 #000;
+    margin-left: 0.1em;
+    margin-top: 0.1em;
+}
+.info p {
+    margin-top: 1em;
+}
+#contrib {
+    font-family: georgia;
+    font-size: 138.5%;
 }
 #buttons {
     padding-top: 2em;
@@ -48,4 +96,24 @@ div.button {
 }
 #ft {
     border-top: 3px solid black;
+    padding-top: 1em;
+    margin-top: 2em;
+}
+#ft p {
+    text-align: center;
+    padding-bottom: 1em;
+}
+a#logo {
+    margin-left: auto;
+    margin-right: auto;
+    background: url(../images/10gen.png) no-repeat 0 0;
+    display: block;
+    width: 150px;
+    height: 70px;
+}
+a#logo:hover {
+    background-position: 0 -70px;
+}
+a#logo span {
+    display: none;
 }

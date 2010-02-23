@@ -1,14 +1,19 @@
 function show_home() {
-    jQuery(".info").hide();
+    jQuery("div.button a").removeClass("selected");
+    jQuery(".info").hide("fast");
+    jQuery(".intro").show("fast");
 }
 
 function show_section(section) {
+    jQuery("div.button a").removeClass("selected");
+    jQuery(".intro").hide("fast");
     jQuery(".info").hide("fast");
     jQuery("#" + section).show("fast");
+    jQuery("a." + section).addClass("selected");
 }
 
 jQuery(function() {
-           show_home();
+           jQuery(".info").hide();
            jQuery.address.change(function(event) {
                                      switch (event.path) {
                                      case "/":

@@ -12,63 +12,43 @@
   <body>
     <div id="doc" class="yui-t7">
       <div id="hd" role="banner">
-        <h1>BSON</h1>
+        <h1><a href="#/">BSON</a></h1>
         <div id="graphic">
           <div id="right-brace" class="brace">}</div>
           <div id="bits">
-            01101101<br/>
-            01101001<br/>
-            01101011<br/>
-            01100101
+            01010100<br/>
+            11101011<br/>
+            1010<a id="egg" href="http://www.dirolf.com">1</a>110<br/>
+            01010101
           </div>
           <div id="left-brace" class="brace">{</div>
         </div>
       </div>
       <div id="bd" role="main">
-        <div class="yui-g">
+        <div class="yui-g intro">
           <div class="yui-u first">
-            <p>
-              <abbr title="Binary
-              JSON">BSON</abbr> <span class="pronounce">[bee &middot;
-              sun]</span>, short for
-              Binary <a href="http://json.org"><abbr title="JavaScript
-              Object Notation">JSON</abbr></a>, is a binary-encoded
-              serialization of JSON-like documents. Like JSON, BSON
-              supports the embedding of documents and arrays within
-              other documents and arrays. BSON contains extensions
-              that allow representation of data types that are not
-              part of the JSON spec. For example, BSON has a Date type
-              and a BinData type.
-            </p>
+            <p><abbr title="Binary JSON">BSON</abbr> <span class="pronounce">[bee &middot; sun]</span>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
+            <p>BSON can be com&shy;pared to bin&shy;ary inter&shy;change for&shy;mats, like <a href="http://code.google.com/p/protobuf/">Proto&shy;col Buf&shy;fers</a>. BSON is more "schema-less" than Proto&shy;col Buf&shy;fers, which can give it an ad&shy;vant&shy;age in flex&shy;ib&shy;il&shy;ity but also a slight dis&shy;ad&shy;vant&shy;age in space ef&shy;fi&shy;ciency (BSON has over&shy;head for field names with&shy;in the seri&shy;al&shy;ized data).</p>
           </div>
           <div class="yui-u">
-            <p>
-              BSON is designed to be lightweight, easily traversable,
-              and efficient to encode and decode. It is an open format
-              that is applicable to wide range of data-marshalling
-              problems. The key advantage over XML and JSON is
-              efficiency (both in terms of space and compute time).
-            </p>
-            <p>
-              BSON can be compared to binary interchange formats, such
-              as <a href="http://code.google.com/p/protobuf/">Protocol
-              Buffers</a>. BSON is more "schema-less" than Protocol
-              Buffers, which can give it an advantage in flexibility
-              but also a slight disadvantage in space efficiency (BSON
-              has overhead for field names within the serialized
-              data).
-            </p>
+            <p>BSON is designed to be lightweight, easily traversable, and efficient to encode and decode. It is an open format that is applicable to wide range of data-marshalling problems. The key advantage over XML and JSON is efficiency (both in terms of space and compute time).</p>
           </div>
         </div>
         <div class="yui-gb" id="buttons">
           <a href="specification" rel="address:specification">
-            <div class="yui-u first button">specification</div>
+            <div class="yui-u first button">
+              <a class="spec" href="specification" rel="address:specification">specification</a>
+            </div>
           </a>
           <a href="implementation" rel="address:implementation">
-            <div class="yui-u button">implementation</div>
+            <div class="yui-u button">
+              <a class="lib" href="implementation" rel="address:implementation">implementation</a>
+            </div>
           </a>
           <a href="discussion" rel="address:discussion">
-            <div class="yui-u button">discussion</div>
+            <div class="yui-u button">
+              <a class="contrib" href="discussion" rel="address:discussion">discussion</a>
+            </div>
           </a>
         </div>
         <div class="yui-g">
@@ -122,7 +102,19 @@ eoo ::= "\x00"
           </div>
         </div>
       </div>
-      <div id="ft" role="contentinfo"><p>Footer</p></div>
+      <div id="ft" role="contentinfo">
+        <div class="yui-g">
+          <p>bsonspec.org is</p>
+          <div class="yui-u first 10gen">
+            <p>sponsored by</p>
+            <a href="http://www.10gen.com" id="logo"><span>10gen</span></a>
+          </div>
+          <div class="yui-u">
+            <p>remixable</p>
+            <a href="
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

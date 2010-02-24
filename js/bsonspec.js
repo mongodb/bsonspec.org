@@ -33,4 +33,12 @@ jQuery(function() {
                                      }
                                  });
            jQuery(".tt").tooltip({delay: 0, fade: 100, track: true, showBody: " - "});
+           jQuery(".hl").mouseover(function() {
+                                       var cls = "." + jQuery(this).attr("class").substring(3, 4);
+                                       jQuery(cls).addClass("highlight");
+                                   });
+           jQuery(".hl").mouseout(function() {
+                                      var cls = "." + jQuery(this).attr("class").substring(3, 4);
+                                      jQuery(cls).removeClass("highlight");
+                                  });
 });

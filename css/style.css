@@ -139,7 +139,7 @@ td.t {
     font-family: monospace;
     padding-right: 2em;
 }
-td.f {
+td.fix {
     font-size: 123.1%;
     font-family: monospace;
     padding-right: 0.5em;
@@ -209,6 +209,16 @@ div.intro li p {
 #tooltip h3, #tooltip div {
     margin: 0;
 }
+.tt:hover {
+    cursor: default;
+}
 .tt:after {
     content: url(../images/info.png);
 }
+table#examples td {
+    padding-left: 1em;
+    padding-top: 1em;
+}
+.highlight {
+    font-weight: bold;
+};

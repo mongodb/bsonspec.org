@@ -68,23 +68,91 @@
         <div class="yui-g">
           <div class="info" id="spec">
             <h3>Version 1.0</h3>
-            <p>The following document specifies version 1.0 of the
-            BSON standard. We've written the document using a
+
+            <p>BSON is a binary format in which zero or more key/value
+            pairs are stored as a single entity. We call this entity
+            a <em>document</em>.</p>
+
+            <p>The following grammar specifies version 1.0 of the
+            BSON standard. We've written the grammar using a
             pseudo-<a href="http://en.wikipedia.org/wiki/Backus–Naur_Form">BNF</a>
             syntax. Valid BSON data is represented by
-            the <code>bson_object</code> non-terminal.</p>
+            the <code>document</code> non-terminal.</p>
 
+            <div id="grammar">
+              <h3>Basic Types</h3>
+
+              <p>The following basic types are used as terminals in
+              the rest of the grammar. Each type must be serialized in
+              little-endian format.</p>
+
+              <div class="tb">
+                <table>
+                  <tr>
+                    <td class="t">byte</td>
+                    <td>1 byte (8-bits)</td>
+                  </tr>
+                  <tr>
+                    <td class="t">int32</td>
+                    <td>4 bytes (32-bit signed integer)</td>
+                  </tr>
+                  <tr>
+                    <td class="t">int64</td>
+                    <td>8 bytes (64-bit signed integer)</td>
+                  </tr>
+                  <tr>
+                    <td class="t">double</td>
+                    <td>8 bytes (64-bit IEEE 754 floating point)</td>
+                  </tr>
+                </table>
+              </div>
+
+              <h3>Non-terminals</h3>
+
+              <p>The following specifies the rest of the BSON
+              grammar. Note that quoted strings represent terminals,
+              and should be interpreted with C semantics (e.g. "\x01"
+              represents the byte <code>0000 0001</code>).</p>
+
+              <div class="tb">
+                <table>
+                  <tr>
+                    <td class="nt">document</td>
+                    <td class="op">::=</td>
+                    <td class="ex">int32 element_list "\x00"</td>
+                    <td>The int32 is the total number of bytes comprising the document.</td>
+                  </tr>
+                  <tr>
+                    <td class="nt"></td>
+                    <td class="op"></td>
+                    <td class="ex"></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="nt"></td>
+                    <td class="op"></td>
+                    <td class="ex"></td>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <h3>Examples</h3>
+
+            <p>The following are some example documents and their
+            corresponding BSON representations:</p>
             <pre>
-bson_object ::= obj_size element_list eoo
+document ::= doc_size element_list eoo
 
-obj_size ::= int32
+doc_size ::= int32
 
 element_list ::= element element_list | ""
 
 element ::= "\x01" element_name double                 // Double precision floating point
           | "\x02" element_name data_string            // UTF-8 string
-          | "\x03" element_name bson_object            // Embedded document
-          | "\x04" element_name bson_object            // Array (see note)
+          | "\x03" element_name document            // Embedded document
+          | "\x04" element_name document            // Array (see note)
           | "\x05" element_name data_binary            // Binary data
           | "\x06" element_name                        // Undefined value - Deprecated
           | "\x07" element_name byte[12]               // ObjectId
@@ -212,5 +280,14 @@ eoo ::= "\x00"
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-7301842-4");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
   </body>
 </html>

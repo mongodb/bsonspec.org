@@ -86,6 +86,9 @@ div.button a:active {
 ul li {
     list-style-type: disc;
 }
+em {
+    font-style: italic;
+}
 h3 {
     font-family: verdana;
     font-weight: bold;
@@ -93,7 +96,7 @@ h3 {
 }
 div.info h3 {
     font-size: 128.5%;
-    padding-top: 1em;
+    padding-top: 1.5em;
 }
 div.col {
     margin-left: 3%;
@@ -117,6 +120,21 @@ div#col2 {
     margin-top: 1em;
     font-family: georgia;
     font-size: 138.5%;
+}
+div#grammar {
+    width: 95%;
+    margin-left: 5%;
+}
+div.tb {
+    margin: 2em;
+}
+td {
+    font-size: 138.5%;
+}
+td.t {
+    margin-left: 2em;
+    font-family: monospace;
+    padding-right: 2em;
 }
 #buttons {
     padding-top: 2em;

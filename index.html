@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <script type="text/javascript" src="js/jquery-1.4.1.min.js"/>
     <script type="text/javascript" src="js/jquery.address-1.1.min.js"/>
+    <script type="text/javascript" src="js/jquery.tooltip.min.js"/>
     <script type="text/javascript" src="js/bsonspec.js"/>
   </head>
   <body>
@@ -111,28 +112,214 @@
 
               <p>The following specifies the rest of the BSON
               grammar. Note that quoted strings represent terminals,
-              and should be interpreted with C semantics (e.g. "\x01"
-              represents the byte <code>0000 0001</code>).</p>
+              and should be interpreted with C semantics
+              (e.g. <code>"\x01"</code> represents the byte <code>0000
+              0001</code>). Also note that we use the <code>*</code>
+              operator as shorthand for repetition
+              (e.g. <code>("\x01"*2)</code>
+              is <code>"\x01\x01"</code>). When used as a unary
+              operator, <code>*</code> means that the repetition can
+              occur 0 or more times.</p>
 
               <div class="tb">
                 <table>
                   <tr>
-                    <td class="nt">document</td>
-                    <td class="op">::=</td>
-                    <td class="ex">int32 element_list "\x00"</td>
-                    <td>The int32 is the total number of bytes comprising the document.</td>
+                    <td class="f nt">document</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">int32 e_list "\x00"</td>
+                    <td class="tt" title="BSON Document - The int32 is the total number of bytes comprising the document.">BSON Document</td>
                   </tr>
-                  <tr>
-                    <td class="nt"></td>
-                    <td class="op"></td>
-                    <td class="ex"></td>
+                  <tr class="section">
+                    <td class="f nt">e_list</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">element e_list</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="nt"></td>
-                    <td class="op"></td>
-                    <td class="ex"></td>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">""</td>
                     <td></td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">element</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">"\x01" e_name double</td>
+                    <td>Floating point</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x02" e_name string</td>
+                    <td>UTF-8 string</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x03" e_name document</td>
+                    <td>Embedded document</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x04" e_name document</td>
+                    <td class="tt" title="Array - The document for an array is a normal BSON document with integer values for the keys, starting with 0 and continuing sequentially. For example, the array ['red', 'blue'] would be encoded as the document {'0': 'red', '1': 'blue'}. The keys must be in ascending numerical order.">Array</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x05" e_name binary</td>
+                    <td>Binary data</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x06" e_name</td>
+                    <td>Undefined &mdash; <em>Deprecated</em></td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x07" e_name (byte*12)</td>
+                    <td><a href="http://dochub.mongodb.org/core/objectids">ObjectId</a></td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x08" e_name "\x00"</td>
+                    <td>Boolean "false"</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x08" e_name "\x01"</td>
+                    <td>Boolean "true"</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x09" e_name int64</td>
+                    <td class="tt" title="UTC datetime - The int64 is UTC milliseconds since the Unix epoch.">UTC datetime</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x0A" e_name</td>
+                    <td>Null value</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x0B" e_name cstring cstring</td>
+                    <td class="tt" title="Regular expression - The first cstring is the regex pattern, the second is the regex options string. Options are identified by characters, which must be stored in alphabetical order. Valid options are 'i' for case insensitive matching, 'm' for multiline matching, 'x' for verbose mode, 'l' to make \w, \W, etc. locale dependent, 's' for dotall mode ('.' matches everything), and 'u' to make \w, \W, etc. match unicode.">Regular expression</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x0C" e_name string (byte*12)</td>
+                    <td>DBPointer &mdash; <em>Deprecated</em></td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x0D" e_name string</td>
+                    <td>JavaScript code</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x0E" e_name string</td>
+                    <td>Symbol</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x0F" e_name int32 string document</td>
+                    <td>JavaScript code (with scope)</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x10" e_name int32</td>
+                    <td>32-bit Integer</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x11" e_name int64</td>
+                    <td>Timestamp</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x12" e_name int64</td>
+                    <td>64-bit integer</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\xFF" e_name</td>
+                    <td>Min key</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x7F" e_name</td>
+                    <td>Max key</td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">e_name</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">cstring</td>
+                    <td class="tt" title="Key name - must not contain '\x00'">Key name</td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">string</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">int32 cstring</td>
+                    <td class="tt" title="string - The int32 is the size of the cstring in bytes."></td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">cstring</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">(byte*) "\x00"</td>
+                    <td class="tt" title="cstring - zero or more UTF-8 encoded characters followed by '\x00'."></td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">binary</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">int32 subtype (byte*)</td>
+                    <td class="tt" title="binary - The int32 is the number of bytes in the (byte*)."></td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">subtype</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">"\x01"</td>
+                    <td>function</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x02"</td>
+                    <td class="tt" title="Binary subtype - This is the most commonly used binary subtype. The structure of the binary data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32 is the number of bytes in the repetition.">binary</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x03"</td>
+                    <td>UUID</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x05"</td>
+                    <td>MD5</td>
+                  </tr>
+                  <tr>
+                    <td class="f nt"></td>
+                    <td class="f op">|</td>
+                    <td class="f ex">"\x80"</td>
+                    <td class="tt" title="user defined - The structure of the binary data can be anything.">user defined</td>
                   </tr>
                 </table>
               </div>
@@ -142,35 +329,6 @@
 
             <p>The following are some example documents and their
             corresponding BSON representations:</p>
-            <pre>
-document ::= doc_size element_list eoo
-
-doc_size ::= int32
-
-element_list ::= element element_list | ""
-
-element ::= "\x01" element_name double                 // Double precision floating point
-          | "\x02" element_name data_string            // UTF-8 string
-          | "\x03" element_name document            // Embedded document
-          | "\x04" element_name document            // Array (see note)
-          | "\x05" element_name data_binary            // Binary data
-          | "\x06" element_name                        // Undefined value - Deprecated
-          | "\x07" element_name byte[12]               // ObjectId
-          | "\x08" element_name "\x00"                 // Boolean "false"
-          | "\x08" element_name "\x01"                 // Boolean "true"
-          | "\x09" element_name int64                  // UTC Date as milliseconds since epoch
-          | "\x0A" element_name                        // Null value
-          | "\x0B" element_name cstring cstring        // Regular expression (see note)
-          | "\x0C" element_name int32 cstring byte[12] // Ref - Deprecated
-          | "\x0D" element_name data_string
-          | "\x0E" element_name data_string
-          | "\x0F" element_name data_string
-          | "\x10" element_name data_string
-          | "\x11" element_name data_string
-          | "\x12" element_name data_string
-
-eoo ::= "\x00"
-            </pre>
           </div>
           <div class="info" id="lib">
             <p>

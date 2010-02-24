@@ -32,4 +32,5 @@ jQuery(function() {
                                          jQuery.address.value("/");
                                      }
                                  });
+           jQuery(".tt").tooltip({delay: 0, fade: 100, track: true, showBody: " - "});
 });

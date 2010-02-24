@@ -128,13 +128,27 @@ div#grammar {
 div.tb {
     margin: 2em;
 }
+tr.section td {
+    padding-top: 1em;
+}
 td {
     font-size: 138.5%;
 }
 td.t {
-    margin-left: 2em;
+    font-size: 123.1%;
     font-family: monospace;
     padding-right: 2em;
+}
+td.f {
+    font-size: 123.1%;
+    font-family: monospace;
+    padding-right: 0.5em;
+}
+td.op {
+    text-align: right;
+}
+td.ex {
+    width: 19em;
 }
 #buttons {
     padding-top: 2em;
@@ -184,4 +198,17 @@ div.intro li p {
 }
 #ft a {
     color: black;
+}
+#tooltip {
+    position: absolute;
+    z-index: 3000;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #FFF;
+}
+#tooltip h3, #tooltip div {
+    margin: 0;
+}
+.tt:after {
+    content: url(../images/info.png);
 }

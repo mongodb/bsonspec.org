@@ -5,27 +5,27 @@
     <title>BSON - Binary JSON</title>
     <link rel="stylesheet" href="css/reset-fonts-grids.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script type="text/javascript" src="js/jquery-1.4.1.min.js"/>
-    <script type="text/javascript" src="js/jquery.address-1.1.min.js"/>
-    <script type="text/javascript" src="js/jquery.tooltip.min.js"/>
-    <script type="text/javascript" src="js/bsonspec.js"/>
+    <script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.address-1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tooltip.min.js"></script>
+    <script type="text/javascript" src="js/bsonspec.js"></script>
   </head>
   <body>
     <div id="doc" class="yui-t7">
-      <div id="hd" role="banner">
+      <div id="hd">
         <h1><a href="#/">BSON</a></h1>
         <div id="graphic">
           <div id="right-brace" class="brace">}</div>
           <div id="bits">
-            01010100<br/>
-            11101011<br/>
-            1010<a id="egg" href="http://www.dirolf.com">1</a>110<br/>
+            01010100<br>
+            11101011<br>
+            1010<a id="egg" href="http://www.dirolf.com">1</a>110<br>
             01010101
           </div>
           <div id="left-brace" class="brace">{</div>
         </div>
       </div>
-      <div id="bd" role="main">
+      <div id="bd">
         <div class="yui-g intro">
           <div class="yui-u first">
             <p><abbr title="Binary JSON">BSON</abbr> <span class="pronounce">[bee &middot; sun]</span>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON also con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
@@ -341,14 +341,14 @@
               <table id="examples">
                 <tr><td><code><span class="hl a">{</span><span class="hl b">"hello"</span>: <span class="hl c">"world"</span><span class="hl a">}</span></code></td><td>&rarr;</td><td>
                     <code>"<span class="hl a">\x16\x00\x00\x00</span><span class="hl c">\x02</span><span class="hl b">hello\x00</span>
-                      <br/>&nbsp;<span class="hl c">\x06\x00\x00\x00world\x00</span><span class="hl a">\x00</span>"</code></td></tr>
+                      <br>&nbsp;<span class="hl c">\x06\x00\x00\x00world\x00</span><span class="hl a">\x00</span>"</code></td></tr>
 
                 <tr><td><code><span class="hl d">{</span><span class="hl e">"BSON"</span>: <span class="hl f">[</span><span class="hl g">"awesome"</span>, <span class="hl h">5.05</span>, <span class="hl i">1986</span><span class="hl f">]</span><span class="hl d">}</span></code></td><td>&rarr;</td><td>
                     <code>"<span class="hl d">1\x00\x00\x00</span><span class="hl f">\x04</span><span class="hl e">BSON\x00</span><span class="hl f">&\x00
-                      <br/>&nbsp;\x00\x00</span><span class="hl g">\x02</span><span class="hl f">0\x00</span><span class="hl g">\x08\x00\x00
-                      <br/>&nbsp;\x00awesome\x00</span><span class="hl h">\x01</span><span class="hl f">1\x00</span><span class="hl h">333333
-                      <br/>&nbsp;\x14@</span><span class="hl i">\x10</span><span class="hl f">2\x00</span><span class="hl i">\xc2\x07\x00\x00</span>
-                      <br/>&nbsp;<span class="hl f">\x00</span><span class="hl d">\x00"</span></code></td></tr>
+                        <br>&nbsp;\x00\x00</span><span class="hl g">\x02</span><span class="hl f">0\x00</span><span class="hl g">\x08\x00\x00
+                        <br>&nbsp;\x00awesome\x00</span><span class="hl h">\x01</span><span class="hl f">1\x00</span><span class="hl h">333333
+                        <br>&nbsp;\x14@</span><span class="hl i">\x10</span><span class="hl f">2\x00</span><span class="hl i">\xc2\x07\x00\x00</span>
+                      <br>&nbsp;<span class="hl f">\x00</span><span class="hl d">\x00"</span></code></td></tr>
               </table>
             </p>
           </div>
@@ -443,15 +443,15 @@
           </div>
         </div>
       </div>
-      <div id="ft" role="contentinfo">
+      <div id="ft">
         <div class="yui-gb">
           <div class="yui-u first 10gen">
             <a href="http://www.10gen.com" id="logo" class="ro"><span>10gen</span></a>
           </div>
           <div class="yui-u">
-            <p><a href="http://bsonspec.org">bsonspec.org</a> is:<br/>
-            &larr; sponsored by<br/>
-            licensed under &rarr;<br/>
+            <p><a href="http://bsonspec.org">bsonspec.org</a> is:<br>
+            &larr; sponsored by<br>
+            licensed under &rarr;<br>
             &copy; 2010 <a href="http://www.10gen.com">10gen, Inc.</a></p>
           </div>
           <div class="yui-u">

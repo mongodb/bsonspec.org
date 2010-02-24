@@ -133,7 +133,7 @@
                     <td class="f nt">e_list</td>
                     <td class="f op">::=</td>
                     <td class="f ex">element e_list</td>
-                    <td></td>
+                    <td>Sequence of elements</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
@@ -234,8 +234,8 @@
                   <tr>
                     <td class="f nt"></td>
                     <td class="f op">|</td>
-                    <td class="f ex">"\x0F" e_name int32 string document</td>
-                    <td>JavaScript code (with scope)</td>
+                    <td class="f ex">"\x0F" e_name code_w_s</td>
+                    <td>JavaScript code w/ scope</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
@@ -277,31 +277,31 @@
                     <td class="f nt">string</td>
                     <td class="f op">::=</td>
                     <td class="f ex">int32 cstring</td>
-                    <td class="tt" title="string - The int32 is the size of the cstring in bytes."></td>
+                    <td class="tt" title="String - The int32 is the size of the cstring in bytes.">String</td>
                   </tr>
                   <tr class="section">
                     <td class="f nt">cstring</td>
                     <td class="f op">::=</td>
                     <td class="f ex">(byte*) "\x00"</td>
-                    <td class="tt" title="cstring - zero or more UTF-8 encoded characters followed by '\x00'."></td>
+                    <td class="tt" title="CString - zero or more UTF-8 encoded characters followed by '\x00'.">CString</td>
                   </tr>
                   <tr class="section">
                     <td class="f nt">binary</td>
                     <td class="f op">::=</td>
                     <td class="f ex">int32 subtype (byte*)</td>
-                    <td class="tt" title="binary - The int32 is the number of bytes in the (byte*)."></td>
+                    <td class="tt" title="Binary - The int32 is the number of bytes in the (byte*).">Binary</td>
                   </tr>
                   <tr class="section">
                     <td class="f nt">subtype</td>
                     <td class="f op">::=</td>
                     <td class="f ex">"\x01"</td>
-                    <td>function</td>
+                    <td>Function</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
                     <td class="f op">|</td>
                     <td class="f ex">"\x02"</td>
-                    <td class="tt" title="Binary subtype - This is the most commonly used binary subtype. The structure of the binary data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32 is the number of bytes in the repetition.">binary</td>
+                    <td class="tt" title="Binary subtype - This is the most commonly used binary subtype. The structure of the binary data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32 is the number of bytes in the repetition.">Binary</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
@@ -319,7 +319,13 @@
                     <td class="f nt"></td>
                     <td class="f op">|</td>
                     <td class="f ex">"\x80"</td>
-                    <td class="tt" title="user defined - The structure of the binary data can be anything.">user defined</td>
+                    <td class="tt" title="User defined - The structure of the binary data can be anything.">User defined</td>
+                  </tr>
+                  <tr class="section">
+                    <td class="f nt">code_w_s</td>
+                    <td class="f op">::=</td>
+                    <td class="f ex">int32 string document</td>
+                    <td class="tt" title="Code w/ scope - The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.">Code w/ scope</td>
                   </tr>
                 </table>
               </div>

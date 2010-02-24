@@ -229,7 +229,7 @@
                     <td class="f nt"></td>
                     <td class="f op">|</td>
                     <td class="f ex">"\x0E" e_name string</td>
-                    <td>Symbol</td>
+                    <td class="tt" title="Symbol - Similar to a string but for languages with a distinct symbol type.">Symbol</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
@@ -247,7 +247,7 @@
                     <td class="f nt"></td>
                     <td class="f op">|</td>
                     <td class="f ex">"\x11" e_name int64</td>
-                    <td>Timestamp</td>
+                    <td class="tt" title="Timestamp - Special internal type used by MongoDB replication and sharding. First 4 bytes are a timestamp, second 4 are an increment. Setting the timestamp to 0 has special semantics.">Timestamp</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
@@ -259,13 +259,13 @@
                     <td class="f nt"></td>
                     <td class="f op">|</td>
                     <td class="f ex">"\xFF" e_name</td>
-                    <td>Min key</td>
+                    <td class="tt" title="Min key - Special type which compares lower than all other possible BSON element values.">Min key</td>
                   </tr>
                   <tr>
                     <td class="f nt"></td>
                     <td class="f op">|</td>
                     <td class="f ex">"\x7F" e_name</td>
-                    <td>Max key</td>
+                    <td class="tt" title="Max key - Special type which compares higher than all other possible BSON element values.">Max key</td>
                   </tr>
                   <tr class="section">
                     <td class="f nt">e_name</td>

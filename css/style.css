@@ -233,4 +233,7 @@ table#examples td {
 }
 .highlight {
     font-weight: bold;
-};
+}
+#bsonspecis {
+    padding-top: 1em;
+}

@@ -55,7 +55,7 @@ div.button {
     font-size: 200%;
     color: black;
 }
-div.button a {
+div.button a.nav {
     text-decoration: none;
     color: black;
     border: 2px solid black;
@@ -65,19 +65,20 @@ div.button a {
     -webkit-border-radius: 0.5em;
     margin: 0em;
 }
-div.button a.selected {
+div.button a.selected, div.button a:focus {
+    -webkit-box-shadow: 0.15em 0.15em 0 #000;
+    -moz-box-shadow: 0.15em 0.15em 0 #000;
+    margin-left: -0.15em;
+    margin-top: -0.15em;
+	outline: none;
+}
+div.button a.nav:hover {
     -webkit-box-shadow: 0.15em 0.15em 0 #000;
     -moz-box-shadow: 0.15em 0.15em 0 #000;
     margin-left: -0.15em;
     margin-top: -0.15em;
 }
-div.button a:hover {
-    -webkit-box-shadow: 0.15em 0.15em 0 #000;
-    -moz-box-shadow: 0.15em 0.15em 0 #000;
-    margin-left: -0.15em;
-    margin-top: -0.15em;
-}
-div.button a:active {
+div.button a.nav:active {
     -webkit-box-shadow: -0.1em -0.1em 0 #000;
     -moz-box-shadow: -0.1em -0.1em 0 #000;
     margin-left: 0.1em;

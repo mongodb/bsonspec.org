@@ -89,6 +89,13 @@ ul li {
 em {
     font-style: italic;
 }
+h2 {
+    font-size: 138.5%;
+    font-family: verdana;
+    font-weight: bold;
+    font-style: normal;
+    padding-top: 1em;
+}
 h3 {
     font-family: verdana;
     font-weight: bold;

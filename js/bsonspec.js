@@ -13,6 +13,7 @@ function show_section(section) {
 }
 
 jQuery(function() {
+           jQuery(".nojs").hide();
            jQuery(".info").hide();
            jQuery.address.change(function(event) {
                                      switch (event.path) {

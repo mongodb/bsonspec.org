@@ -25,9 +25,6 @@ jQuery(function() {
                                      case "/implementation":
                                          show_section("lib");
                                          break;
-                                     case "/discussion":
-                                         show_section("contrib");
-                                         break;
                                      default:
                                          jQuery.address.value("/");
                                      }

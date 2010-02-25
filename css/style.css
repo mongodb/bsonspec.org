@@ -223,6 +223,10 @@ div.intro li p {
 .tt:after {
     content: url(../images/info.png);
 }
+table#examples {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
 table#examples td {
     padding-left: 1em;
     padding-top: 1em;

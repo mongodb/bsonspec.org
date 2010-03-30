@@ -269,19 +269,19 @@
                     <td class="fix nt">e_name</td>
                     <td class="fix op">::=</td>
                     <td class="fix ex">cstring</td>
-                    <td class="tt" title="Key name - must not contain '\x00'">Key name</td>
+                    <td class="tt" title="Key name">Key name</td>
                   </tr>
                   <tr class="section">
                     <td class="fix nt">string</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">int32 cstring</td>
-                    <td class="tt" title="String - The int32 is the size of the cstring in bytes.">String</td>
+                    <td class="fix ex">int32 (byte*) "\x00"</td>
+                    <td class="tt" title="String - The int32 is the size of the cstring in bytes. The (byte*) is zero or more UTF-8 encoded characters.">String</td>
                   </tr>
                   <tr class="section">
                     <td class="fix nt">cstring</td>
                     <td class="fix op">::=</td>
                     <td class="fix ex">(byte*) "\x00"</td>
-                    <td class="tt" title="CString - zero or more UTF-8 encoded characters followed by '\x00'.">CString</td>
+                    <td class="tt" title="CString - Zero or more modified UTF-8 encoded characters followed by '\x00'. The (byte*) MUST NOT contain '\x00', hence it is not full UTF-8.">CString</td>
                   </tr>
                   <tr class="section">
                     <td class="fix nt">binary</td>

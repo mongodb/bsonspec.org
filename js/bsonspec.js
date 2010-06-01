@@ -1,11 +1,11 @@
 function show_home() {
-    jQuery("div.button a").removeClass("selected");
+    jQuery(".button a").removeClass("selected");
     jQuery(".info").hide("fast");
     jQuery(".intro").show("fast");
 }
 
 function show_section(section) {
-    jQuery("div.button a").removeClass("selected");
+    jQuery(".button a").removeClass("selected");
     jQuery(".intro").hide("fast");
     jQuery(".info").hide("fast");
     jQuery("#" + section).show("fast");
@@ -25,6 +25,9 @@ jQuery(function() {
                                          break;
                                      case "/implementation":
                                          show_section("lib");
+                                         break;
+                                     case "/faq":
+                                         show_section("faq");
                                          break;
                                      default:
                                          jQuery.address.value("/");

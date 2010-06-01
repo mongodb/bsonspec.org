@@ -49,40 +49,50 @@ div.intro p {
 #hd #right-brace {
     float: right;
 }
-div.button {
+#buttons {
+    padding-top: 3em;
+    padding-bottom: 2em;
+}
+.button {
     text-align: center;
-    padding-top: 1em;
     font-size: 200%;
     color: black;
+    margin-left: 1.3em;
 }
-div.button a.nav {
+#first-button {
+    margin-left: 0em;
+}
+.button a.nav {
     text-decoration: none;
     color: black;
     border: 2px solid black;
     padding: 0.5em;
+    margin: 0em;
     border-radius: 0.5em;
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
-    margin: 0em;
 }
-div.button a.selected, div.button a:focus {
+.button a.selected, .button a:focus {
+    margin-left: -0.15em;
+    margin-right: 0.15em;
+    margin-top: -0.15em;
+    outline: none;
     -webkit-box-shadow: 0.15em 0.15em 0 #000;
     -moz-box-shadow: 0.15em 0.15em 0 #000;
-    margin-left: -0.15em;
-    margin-top: -0.15em;
-	outline: none;
 }
-div.button a.nav:hover {
+.button a.nav:hover {
+    margin-left: -0.15em;
+    margin-right: 0.15em;
+    margin-top: -0.15em;
     -webkit-box-shadow: 0.15em 0.15em 0 #000;
     -moz-box-shadow: 0.15em 0.15em 0 #000;
-    margin-left: -0.15em;
-    margin-top: -0.15em;
 }
-div.button a.nav:active {
+.button a.nav:active {
+    margin-left: 0.1em;
+    margin-right: -0.1em;
+    margin-top: 0.1em;
     -webkit-box-shadow: -0.1em -0.1em 0 #000;
     -moz-box-shadow: -0.1em -0.1em 0 #000;
-    margin-left: 0.1em;
-    margin-top: 0.1em;
 }
 ul li {
     list-style-type: disc;
@@ -157,10 +167,6 @@ td.op {
 }
 td.ex {
     width: 19em;
-}
-#buttons {
-    padding-top: 2em;
-    padding-bottom: 2em;
 }
 #ft {
     border-top: 3px solid black;

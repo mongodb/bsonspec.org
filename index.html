@@ -295,6 +295,12 @@
                   <tr class="section">
                     <td class="fix nt">subtype</td>
                     <td class="fix op">::=</td>
+                    <td class="fix ex">"\x00"</td>
+                    <td class="tt" title="Generic binary subtype - This is the most commonly used binary subtype and should be the 'default' for drivers and tools.">Binary / Generic</td>
+                  </tr>
+                  <tr>
+                    <td class="fix nt"></td>
+                    <td class="fix op">|</td>
                     <td class="fix ex">"\x01"</td>
                     <td>Function</td>
                   </tr>
@@ -302,7 +308,7 @@
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">"\x02"</td>
-                    <td class="tt" title="Binary subtype - This is the most commonly used binary subtype. The structure of the binary data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32 is the number of bytes in the repetition.">Binary</td>
+                    <td class="tt" title="Old generic subtype - This used to be the default subtype, but was deprecated in favor of \x00. Drivers and tools should be sure to handle \x02 appropriately. The structure of the binary data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32 is the number of bytes in the repetition.">Binary</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>

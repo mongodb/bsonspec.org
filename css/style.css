@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 div.intro p {
     font-family: georgia;
     font-size: 138.5%;
@@ -212,11 +216,18 @@ div.intro li p {
     position: absolute;
     z-index: 3000;
     border: 1px solid black;
-    padding: 5px;
     background-color: #FFF;
 }
 #tooltip h3, #tooltip div {
     margin: 0;
+}
+#tooltip h3{
+    background-color: #000;
+    color: #FFF;
+	padding: 2px;
+}
+#tooltip div.body {
+   padding:5px;
 }
 .tt:hover {
     cursor: default;

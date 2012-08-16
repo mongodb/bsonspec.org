@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
     <title>BSON - Binary JSON</title>
     <link rel="stylesheet" href="css/reset-fonts-grids.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -230,7 +231,7 @@
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">"\x0E" e_name string</td>
-                    <td class="tt" title="Symbol - Similar to a string but for languages with a distinct symbol type.">Symbol</td>
+                    <td class="tt" title="Symbol - Similar to a string but for languages with a distinct symbol type.">Symbol &mdash; <em>Deprecated</em></td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
@@ -314,6 +315,12 @@
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">"\x03"</td>
+                    <td class="tt" title="Old UUID subtype - This used to be the UUID subtype, but was deprecated in favor of \x04. Drivers and tools for languages with a native UUID type should handle \x03 appropriately.">UUID (Old)</td>
+                  </tr>
+                  <tr>
+                    <td class="fix nt"></td>
+                    <td class="fix op">|</td>
+                    <td class="fix ex">"\x04"</td>
                     <td>UUID</td>
                   </tr>
                   <tr>
@@ -350,7 +357,7 @@
                       <br>&nbsp;<span class="hl c">\x06\x00\x00\x00world\x00</span><span class="hl a">\x00</span>"</code></td></tr>
 
               <tr><td><code><span class="hl d">{</span><span class="hl e">"BSON"</span>: <span class="hl f">[</span><span class="hl g">"awesome"</span>, <span class="hl h">5.05</span>, <span class="hl i">1986</span><span class="hl f">]</span><span class="hl d">}</span></code></td><td>&rarr;</td><td>
-                  <code>"<span class="hl d">1\x00\x00\x00</span><span class="hl f">\x04</span><span class="hl e">BSON\x00</span><span class="hl f">&\x00
+                  <code>"<span class="hl d">\x31\x00\x00\x00</span><span class="hl f">\x04</span><span class="hl e">BSON\x00</span><span class="hl f">&\x00
                         <br>&nbsp;\x00\x00</span><span class="hl g">\x02</span><span class="hl f">0\x00</span><span class="hl g">\x08\x00\x00
                         <br>&nbsp;\x00awesome\x00</span><span class="hl h">\x01</span><span class="hl f">1\x00</span><span class="hl h">333333
                         <br>&nbsp;\x14@</span><span class="hl i">\x10</span><span class="hl f">2\x00</span><span class="hl i">\xc2\x07\x00\x00</span>
@@ -373,14 +380,11 @@
             <div class="col" id="col1">
               <h3>BSON Libraries</h3>
               <ul>
-		<li>
-                  <p><a href="http://github.com/argoncloud/ActionBSON/">ActionScript</a></p>
-                </li>
                 <li>
                   <p><a href="http://github.com/mongodb/mongo-c-driver/tree/master/src/">C</a></p>
                 </li>
                 <li>
-                  <p>C# / .Net: <a href="https://github.com/mongodb/mongo-csharp-driver/tree/master/Bson/">Official MongoDB driver</a> or <a href="http://github.com/samus/mongodb-csharp/tree/master/MongoDBDriver/Bson/">mongodb-csharp</a> or <a href="http://james.newtonking.com/archive/2009/12/26/json-net-3-5-release-6-binary-json-bson-support.aspx">Json.NET</a> or <a href="http://github.com/karlseguin/Metsys.Bson">Metsys.Bson</a></p>
+                  <p>C# / .Net: <a href="https://github.com/mongodb/mongo-csharp-driver/tree/master/Bson/">Official MongoDB driver</a> or <a href="https://github.com/samus/mongodb-csharp/">mongodb-csharp</a> or <a href="http://james.newtonking.com/archive/2009/12/26/json-net-3-5-release-6-binary-json-bson-support.aspx">Json.NET</a> or <a href="http://github.com/karlseguin/Metsys.Bson">Metsys.Bson</a></p>
                 </li>
                 <li>
                   <p><a href="http://dochub.mongodb.org/core/bsoncplusplus">C++</a> or <a href="https://github.com/jbenet/bson-cpp">stand-alone C++</a></p>
@@ -389,7 +393,7 @@
                   <p>Delphi: <a href="http://code.google.com/p/pebongo/source/browse/trunk/_bson.pas">pebongo</a> or <a href="https://github.com/stijnsanders/TMongoWire/blob/master/bsonDoc.pas">TMongoWire</a></p>
                 </li>
                 <li>
-                  <p><a href="http://github.com/JacobVorreuter/emongo/blob/master/src/emongo_bson.erl">Erlang</a> or <a href="http://github.com/wpntv/erlmongo/blob/master/mongodb.erl">Erlang</a></p>
+                  <p><a href="http://github.com/JacobVorreuter/emongo/blob/master/src/emongo_bson.erl">Erlang</a> or <a href="https://github.com/wpntv/erlmongo/">Erlang</a></p>
                 </li>
                 <li>
                     <p><a href="http://github.com/slavapestov/factor/tree/master/extra/bson/">Factor</a></p>
@@ -405,7 +409,7 @@
                 </li>
                 <li>
                   <p>Java: <a
-                    href="http://github.com/mongodb/mongo-java-driver/blob/master/src/main/com/mongodb/RawDBObject.java">Official
+                    href="https://github.com/mongodb/mongo-java-driver/blob/master/src/main/org/bson">Official
                     MongoDB driver</a> or <a
                     href="https://github.com/michel-kraemer/bson4jackson">bson4jackson</a>
                   or <a href="http://github.com/kohanyirobert/ebson">ebson</a></p>
@@ -435,6 +439,9 @@
                 <li>
                   <p><a href="http://rubygems.org/gems/bson">Ruby</a>
                   &mdash; with <a href="http://rubygems.org/gems/bson_ext">optional C extension</a></p>
+                </li>
+                <li>
+                  <p><a href="http://www.squeaksource.com/MongoTalk.html">Smalltalk</a>
                 </li>
                 <li>
                   <p><a href="http://github.com/mdirolf/mlmongo/blob/master/bson.sml">Standard ML (SML)</a></p>

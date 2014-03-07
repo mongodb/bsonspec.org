@@ -1,0 +1,16 @@
+td.t {
+    font-size: 123.1%;
+    font-family: monospace;
+    padding-right: 2em;
+}
+td.fix {
+    font-size: 123.1%;
+    font-family: monospace;
+    padding-right: 0.5em;
+}
+td.op {
+    text-align: right;
+}
+td.ex {
+    width: 19em;
+}

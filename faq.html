@@ -1,0 +1,50 @@
+<html>
+<body>
+<h2 class="nojs">FAQ</h2>
+<div class="info" id="faq">
+            <h3>What is the point of BSON when it is no smaller than
+            JSON in many cases?</h3>
+            <p>BSON is designed to be efficient in space, but in many
+            cases is not much more efficient than JSON. In some cases
+            BSON uses even more space than JSON. The reason for this
+            is another of the BSON design goals: traversability. BSON
+            adds some "extra" information to documents, like length
+            prefixes, that make it easy and fast to traverse.</p>
+
+            <p>BSON is also designed to be fast to encode and
+            decode. For example, integers are stored as 32 (or 64) bit
+            integers, so they don't need to be parsed to and from
+            text. This uses more space than JSON for small integers,
+            but is much faster to parse.</p>
+
+            <h3>Where can I get more help/infomation?</h3>
+            <p>The best place to ask questions about BSON is on
+            the <a href="http://groups.google.com/group/bson">BSON
+            mailing list</a>.</p>
+
+            <h3>How can I contribute or make fixes to this site?</h3>
+            <p>The best way to contribute to this site is to
+            fork <a href="http://github.com/mongodb/bsonspec.org">the
+            project</a> and send us a pull request.</p>
+</div>
+            <h2>Examples</h2>
+<div>
+            <p>The following are some example documents (in JavaScript
+            / Python style syntax) and their corresponding BSON
+            representations.</p>
+
+            <table id="examples">
+              <tr><td><code><span class="hl a">{</span><span class="hl b">"hello"</span>: <span class="hl c">"world"</span><span class="hl a">}</span></code></td><td>&rarr;</td><td>
+                  <code>"<span class="hl a">\x16\x00\x00\x00</span><span class="hl c">\x02</span><span class="hl b">hello\x00</span>
+                      <br>&nbsp;<span class="hl c">\x06\x00\x00\x00world\x00</span><span class="hl a">\x00</span>"</code></td></tr>
+
+              <tr><td><code><span class="hl d">{</span><span class="hl e">"BSON"</span>: <span class="hl f">[</span><span class="hl g">"awesome"</span>, <span class="hl h">5.05</span>, <span class="hl i">1986</span><span class="hl f">]</span><span class="hl d">}</span></code></td><td>&rarr;</td><td>
+                  <code>"<span class="hl d">\x31\x00\x00\x00</span><span class="hl f">\x04</span><span class="hl e">BSON\x00</span><span class="hl f">\x26\x00
+                        <br>&nbsp;\x00\x00</span><span class="hl g">\x02</span><span class="hl f">0\x00</span><span class="hl g">\x08\x00\x00
+                        <br>&nbsp;\x00awesome\x00</span><span class="hl h">\x01</span><span class="hl f">1\x00</span><span class="hl h">\x33\x33\x33\x33\x33\x33
+                        <br>&nbsp;\x14\x40</span><span class="hl i">\x10</span><span class="hl f">2\x00</span><span class="hl i">\xc2\x07\x00\x00</span>
+                      <br>&nbsp;<span class="hl f">\x00</span><span class="hl d">\x00"</span></code></td></tr>
+            </table>
+</div>
+</body></html>
+

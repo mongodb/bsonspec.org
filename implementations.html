@@ -1,0 +1,112 @@
+<html><body>
+  <h2 class="nojs">Implementations</h2>
+          <div class="info" id="lib">
+            <p>
+              Implementations of the BSON specification exist for many
+              different languages / environments. Some implementations
+              are currently embedded
+              within <a href="http://www.mongodb.org">MongoDB</a>
+              drivers, since MongoDB was the first large project to
+              make use of BSON. Over time those libraries will be made
+              more stand-alone, but they should be usable
+              independently of MongoDB in their current state.
+            </p>
+            <div class="col" id="col1">
+              <h3>BSON Libraries</h3>
+              <ul>
+                <li>
+                  <p><a href="http://github.com/mongodb/mongo-c-driver/tree/master/src/">C</a> or <a href="https://github.com/chergert/mongo-glib/tree/master/mongo-glib">C (GLib)</a></p>
+                </li>
+                <li>
+                  <p>
+                    C# / .Net: <a href="https://github.com/mongodb/mongo-csharp-driver/tree/master/Bson/">Official MongoDB driver</a> or
+                    <a href="https://github.com/samus/mongodb-csharp/">mongodb-csharp</a> or <a href="http://james.newtonking.com/archive/2009/12/26/json-net-3-5-release-6-binary-json-bson-support.aspx">Json.NET</a> or <a href="http://github.com/karlseguin/Metsys.Bson">Metsys.Bson</a> or <a href="https://github.com/Softmotions/ejdb/tree/master/nejdb">EJDB BSON</a>
+                  </p>
+                </li>
+                <li>
+                <p><a href="http://dochub.mongodb.org/core/bsoncplusplus">C++</a> or <a href="https://github.com/jbenet/bson-cpp">stand-alone C++</a> or a <a href="http://kenai.com/projects/mongoviewer/pages/BSON">DOM style API</a>.</p>
+                </li>
+                <li>
+                  <p>Delphi: <a href="http://code.google.com/p/pebongo/source/browse/trunk/_bson.pas">pebongo</a> or <a href="https://github.com/stijnsanders/TMongoWire/blob/master/bsonDoc.pas">TMongoWire</a></p>
+                </li>
+                <li>
+                    <p><a href="http://github.com/checkiz/elixir-bson">Elixir</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/JacobVorreuter/emongo/blob/master/src/emongo_bson.erl">Erlang</a> or <a href="https://github.com/wpntv/erlmongo/">Erlang</a></p>
+                </li>
+                <li>
+                    <p><a href="http://github.com/slavapestov/factor/tree/master/extra/bson/">Factor</a></p>
+                </li>
+                <li>
+                  <p><a href="http://bitbucket.org/liamstask/fantomongo/src/tip/fan/bson/">Fantom</a></p>
+                </li>
+                <li>
+                  <p>Go: <a href="http://github.com/mikejs/gomongo">gomongo (driver for MongoDB)</a> or <a href="http://labix.org/gobson">gobson (stand-alone)</a></p>
+                </li>
+                <li>
+                  <p><a href="http://hackage.haskell.org/package/bson">Haskell</a></p>
+                </li>
+                <li>
+                  <p>Java: <a
+                    href="https://github.com/mongodb/mongo-java-driver/blob/master/src/main/org/bson">Official
+                    MongoDB driver</a> or <a
+                    href="https://github.com/michel-kraemer/bson4jackson">bson4jackson</a>
+                  or <a href="http://github.com/kohanyirobert/ebson">ebson</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/paracycle/BsonME">J2ME</a> (work in progress)</p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/fons/cl-mongo/blob/master/src/bson.lisp">Lisp</a> </p>
+                </li>
+                <li>
+                  <p>Lua: <a href="https://github.com/tcoram/bson-lua">bson-lua</a> (pure; work in progress) or <a href="https://github.com/cloudwu/lua-bson">lua-bson</a> (implemented in C)</p>
+                </li>
+                <li>
+                  <p>Node.js: <a href="https://github.com/mongodb/node-mongodb-native">node-mongodb-native</a> or <a href="https://github.com/marcello3d/node-buffalo">node-buffalo (standalone)</p>
+                </li>
+                <li>
+                  <p><a href="http://massd.github.io/bson/">OCaml: bson.ml</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/mongodb/mongo-perl-driver/blob/master/lib/MongoDB/BSON.pm">Perl</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/mongodb/mongo-php-driver">PHP</a></p>
+                </li>
+                <li>
+                  <p><a href="http://github.com/mongodb/mongo-python-driver">Python</a>
+                  &mdash; with optional C extension</p>
+                </li>
+                <li>
+                  <p><a href="http://www.pythomnic3k.org/files/bson.py">Python 3</a></p>
+                </li>
+                <li>
+                  <p><a href="http://rubygems.org/gems/bson">Ruby</a>
+                  &mdash; with <a href="http://rubygems.org/gems/bson_ext">optional C extension</a></p>
+                </li>
+                <li>
+                  <p><a href="http://www.squeaksource.com/MongoTalk.html">Smalltalk</a>
+                </li>
+                <li>
+                  <p><a href="http://github.com/mdirolf/mlmongo/blob/master/bson.sml">Standard ML (SML)</a></p>
+                </li>
+              </ul>
+            </div>
+            <div class="col" id="col2">
+              <h3>Projects Using BSON</h3>
+              <ul>
+                <li>
+                  <p><a href="http://www.mongodb.org">MongoDB</a>, the
+                    document-oriented database, uses BSON as both the
+                    network and on-disk representation of
+                    documents.</p>
+                </li>
+              </ul>
+            </div>
+            <p class="clear">
+              If you know of other BSON implementations or projects
+              using BSON, please <a href="http://github.com/mongodb/bsonspec.org">add them</a>.
+            </p>
+          </div>

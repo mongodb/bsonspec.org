@@ -33,18 +33,35 @@
             / Python style syntax) and their corresponding BSON
             representations.</p>
 
-            <table id="examples">
-              <tr><td><code><span class="hl a">{</span><span class="hl b">"hello"</span>: <span class="hl c">"world"</span><span class="hl a">}</span></code></td><td>&rarr;</td><td>
-                  <code>"<span class="hl a">\x16\x00\x00\x00</span><span class="hl c">\x02</span><span class="hl b">hello\x00</span>
-                      <br>&nbsp;<span class="hl c">\x06\x00\x00\x00world\x00</span><span class="hl a">\x00</span>"</code></td></tr>
+<table>
+<tr>
+<td>
+<pre>
+ {"hello": "world"} 
+</pre>
+</td>
+<td> &rarr; </td>
+<td><pre>
 
-              <tr><td><code><span class="hl d">{</span><span class="hl e">"BSON"</span>: <span class="hl f">[</span><span class="hl g">"awesome"</span>, <span class="hl h">5.05</span>, <span class="hl i">1986</span><span class="hl f">]</span><span class="hl d">}</span></code></td><td>&rarr;</td><td>
-                  <code>"<span class="hl d">\x31\x00\x00\x00</span><span class="hl f">\x04</span><span class="hl e">BSON\x00</span><span class="hl f">\x26\x00
-                        <br>&nbsp;\x00\x00</span><span class="hl g">\x02</span><span class="hl f">0\x00</span><span class="hl g">\x08\x00\x00
-                        <br>&nbsp;\x00awesome\x00</span><span class="hl h">\x01</span><span class="hl f">1\x00</span><span class="hl h">\x33\x33\x33\x33\x33\x33
-                        <br>&nbsp;\x14\x40</span><span class="hl i">\x10</span><span class="hl f">2\x00</span><span class="hl i">\xc2\x07\x00\x00</span>
-                      <br>&nbsp;<span class="hl f">\x00</span><span class="hl d">\x00"</span></code></td></tr>
-            </table>
+ "\x16\x00\x00\x00\x02hello\x00 
+  \x06\x00\x00\x00world\x00\x00"
+
+</pre></td>
+</tr><tr>
+<td><pre>
+ {"BSON": ["awesome", 5.05, 1986]}  
+</pre></td>
+<td> &rarr; </td>
+<td><pre>
+ "\x31\00\00\00
+  \x04BSON\x00\x26\x00\x00\x00 
+  \x020\x00\x08\x00\x00\x00awesome\x00
+  \x011\x00\x33\x33\x33\x33\x33\x33\x14\x40
+  \x102\x00\xc2\x07\x00\x00
+  \x00\x00"
+</pre></td>
+</tr></table>
+
 </div>
 </body></html>
 

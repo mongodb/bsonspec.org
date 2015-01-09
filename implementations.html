@@ -2,8 +2,8 @@
   <h2 class="nojs">Implementations</h2>
           <div class="info" id="lib">
             <p>
-              Implementations of the BSON specification exist for many
-              different languages / environments. Some implementations
+              Implementations of BSON exist for many 
+              different programming languages. Some implementations
               are currently embedded
               within <a href="http://www.mongodb.org">MongoDB</a>
               drivers, since MongoDB was the first large project to
@@ -13,6 +13,7 @@
             </p>
             <div class="col" id="col1">
               <h3>BSON Libraries</h3>
+              <p>Most of these libraries are Apache 2 license, but that depends who wrote it, so check the individual project's details.</p>
               <ul>
                 <li>
                   <p><a href="https://github.com/mongodb/libbson/tree/master/">C</a> or <a href="https://github.com/chergert/mongo-glib/tree/master/mongo-glib">C (GLib)</a></p>
@@ -24,7 +25,16 @@
                   </p>
                 </li>
                 <li>
-                <p><a href="http://dochub.mongodb.org/core/bsoncplusplus">C++</a> or <a href="https://github.com/jbenet/bson-cpp">stand-alone C++</a> or a <a href="http://kenai.com/projects/mongoviewer/pages/BSON">DOM style API</a>.</p>
+                  C++
+                  <ul>
+                    <li>The <a href="http://dochub.mongodb.org/core/bsoncplusplus">MongoDB C++ Driver Library</a> includes a robust BSON and well tested BSON 
+                      implementation. You can use just the BSON portion of the library if desired.</li>
+                    <li><a href="https://github.com/jbenet/bson-cpp">github.com/jbetnet/bson-cpp</a> - A standalone C++ BSON implementation forked from the MongoDB C++ driver, 
+                      with the non-BSON code pruned away.</li>
+                    <li><a href="https://github.com/dwight/bson-cxx">github.com/dwight/bson-cxx</a> - Yet another C++ BSON implementation originating from the MongoDB C++ driver.
+                      Once again non-BSON code was eliminated and some attempts at simplification of the interface. Endian awareness.</li>
+                    <li><a href="http://kenai.com/projects/mongoviewer/pages/BSON">A DOM style API</a> implementation.</li>
+                  </ul>
                 </li>
                 <li>
                   <p>Delphi: <a href="http://code.google.com/p/pebongo/source/browse/trunk/_bson.pas">pebongo</a> or <a href="https://github.com/stijnsanders/TMongoWire/blob/master/bsonDoc.pas">TMongoWire</a></p>
@@ -103,6 +113,10 @@
                     network and on-disk representation of
                     documents.</p>
                 </li>
+                <li>
+                  <p><a href="https://github.com/dwight/bsontools">bsontools</a> - command line utilities for 
+                    manipulating BSON files, and for translating them to and from other formats such as csv, 
+                    JSON, and XML.</p>
               </ul>
             </div>
             <p class="clear">

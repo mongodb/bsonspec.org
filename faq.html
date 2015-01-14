@@ -1,21 +1,37 @@
 <html>
 <body>
+
 <h2 class="nojs">FAQ</h2>
+
 <div class="info" id="faq">
             <h3>What is the point of BSON when it is no smaller than
-            JSON in many cases?</h3>
-            <p>BSON is designed to be efficient in space, but in many
+            JSON in some cases?</h3>
+
+            <p>BSON is designed to be efficient in space, but in some
             cases is not much more efficient than JSON. In some cases
             BSON uses even more space than JSON. The reason for this
             is another of the BSON design goals: traversability. BSON
-            adds some "extra" information to documents, like length
-            prefixes, that make it easy and fast to traverse.</p>
+            adds some "extra" information to documents, like length of
+            strings and subobjects. This makes traversal faster.
+            </p>
 
             <p>BSON is also designed to be fast to encode and
             decode. For example, integers are stored as 32 (or 64) bit
             integers, so they don't need to be parsed to and from
             text. This uses more space than JSON for small integers,
             but is much faster to parse.</p>
+
+            <p>In addition to compactness, BSON adds additional data
+            types unavailable in JSON, most notably the BinData and
+            Date data types.</p>
+
+            <h3>What is a <tt>.bson</tt> file?</h3>
+            A BSON file (by convention, using "<tt>.bson</tt>"
+            extension) contains zero or more BSON documents
+            contiguously appended to a flat file.  For example, the
+            MongoDB <tt>mongodump</tt>
+            utility outputs BSON files. The <a href="https://www.github.com/dwight/bsontools">bsontools</a>
+            utilities manipulate BSON files.
 
             <h3>Where can I get more help/infomation?</h3>
             <p>The best place to ask questions about BSON is on
@@ -33,18 +49,40 @@
             / Python style syntax) and their corresponding BSON
             representations.</p>
 
-            <table id="examples">
-              <tr><td><code><span class="hl a">{</span><span class="hl b">"hello"</span>: <span class="hl c">"world"</span><span class="hl a">}</span></code></td><td>&rarr;</td><td>
-                  <code>"<span class="hl a">\x16\x00\x00\x00</span><span class="hl c">\x02</span><span class="hl b">hello\x00</span>
-                      <br>&nbsp;<span class="hl c">\x06\x00\x00\x00world\x00</span><span class="hl a">\x00</span>"</code></td></tr>
+<table>
+<tr>
+<td>
+<pre>
+ {"hello": "world"}
+</pre>
+</td>
+<td> &rarr; </td>
+<td><pre>
 
-              <tr><td><code><span class="hl d">{</span><span class="hl e">"BSON"</span>: <span class="hl f">[</span><span class="hl g">"awesome"</span>, <span class="hl h">5.05</span>, <span class="hl i">1986</span><span class="hl f">]</span><span class="hl d">}</span></code></td><td>&rarr;</td><td>
-                  <code>"<span class="hl d">\x31\x00\x00\x00</span><span class="hl f">\x04</span><span class="hl e">BSON\x00</span><span class="hl f">\x26\x00
-                        <br>&nbsp;\x00\x00</span><span class="hl g">\x02</span><span class="hl f">0\x00</span><span class="hl g">\x08\x00\x00
-                        <br>&nbsp;\x00awesome\x00</span><span class="hl h">\x01</span><span class="hl f">1\x00</span><span class="hl h">\x33\x33\x33\x33\x33\x33
-                        <br>&nbsp;\x14\x40</span><span class="hl i">\x10</span><span class="hl f">2\x00</span><span class="hl i">\xc2\x07\x00\x00</span>
-                      <br>&nbsp;<span class="hl f">\x00</span><span class="hl d">\x00"</span></code></td></tr>
-            </table>
+  \x16\x00\x00\x00                   // total document size
+  \x02                               // 0x02 = type String
+  hello\x00                          // field name
+  \x06\x00\x00\x00world\x00          // field value
+  \x00                               // 0x00 = type EOO ('end of object')
+
+</pre></td>
+</tr><tr>
+<td><pre>
+ {"BSON": ["awesome", 5.05, 1986]}
+</pre></td>
+<td> &rarr; </td>
+<td><pre>
+  \x31\00\00\00
+  \x04BSON\x00
+  \x26\x00\x00\x00
+  \x02\x30\x00\x08\x00\x00\x00awesome\x00
+  \x01\x31\x00\x033\x33\x33\x33\x33\x33\x14\x40
+  \x10\x32\x00\xc2\x07\x00\0x00
+  \x00
+  \x00
+</pre></td>
+</tr></table>
+
 </div>
-</body></html>
-
+</body>
+</html>

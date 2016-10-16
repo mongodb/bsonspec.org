@@ -1,73 +1,67 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-          "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
   <head>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
     <title>BSON - Binary JSON</title>
-    <link rel="stylesheet" href="css/reset-fonts-grids.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="http://bsonspec.org/" data-pjax-transient>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
   </head>
   <body>
-    <div id="doc" class="yui-t7">
-      <div id="hd">
-        <h1><a href="#/">BSON</a></h1>
-        <div id="graphic">
-          <div id="right-brace" class="brace">}</div>
-          <div id="bits">
-            01010100<br>
-            11101011<br>
-            10101110<br>
-            01010101
-          </div>
-          <div id="left-brace" class="brace">{</div>
+   <header>
+     
+     <div class="menu" class="row">
+       <div align="center" id="logo">
+        <a href="index.html"><img src="images/log.png" alt="BSON" ></a>
         </div>
-      </div>
-      <div id="bd">
-        <div class="yui-g intro">
-          <div class="yui-u first">
-            <p><abbr title="Binary JSON">BSON</abbr> <span class="pronounce">[bee &middot; sahn]</span>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON also con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
+        <nav align="center">
+          <ul>
+          <li><a href="spec.html">Specification</a></li>
+          <li><a href="implementations.html">Implementations</a></li>
+          <li><a href="faq.html">FAQ</a></li> 
+          <li><a href="http://groups.google.com/group/bson">Discussion</a></li>
+         </ul>        
+        </nav>
+     </div> 
+   </header>
+<div class="main">
+   <article>
+     <div align="center" class="intro">
+        <p style="text-indent:50px"><abbr title="Binary JSON">BSON</abbr> <i>[bee &middot; sahn]</i>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON also con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
             <p>BSON can be com&shy;pared to bin&shy;ary inter&shy;change for&shy;mats, like <a href="http://code.google.com/p/protobuf/">Proto&shy;col Buf&shy;fers</a>. BSON is more "schema-less" than Proto&shy;col Buf&shy;fers, which can give it an ad&shy;vant&shy;age in flex&shy;ib&shy;il&shy;ity but also a slight dis&shy;ad&shy;vant&shy;age in space ef&shy;fi&shy;ciency (BSON has over&shy;head for field names with&shy;in the seri&shy;al&shy;ized data).</p>
-          </div>
-          <div class="yui-u">
-            <p>BSON was de&shy;signed to have the fol&shy;low&shy;ing three char&shy;ac&shy;ter&shy;ist&shy;ics:</p>
-            <ol>
-              <li>
-                <h3>Lightweight</h3>
+     </div>
+      <section class="features" class="row">
+        <h2>BSON was de­signed to have the fol­low­ing three char­ac­ter­ist­ics:</h2>
+            <div class="coloumn-3">
+                <h3 id="lw">Lightweight</h3>
                 <p>Keep&shy;ing spa&shy;tial over&shy;head to a min&shy;im&shy;um is im&shy;port&shy;ant for any data rep&shy;res&shy;ent&shy;a&shy;tion format, es&shy;pe&shy;cially when used over the net&shy;work.</p>
-              </li>
-              <li>
-                <h3>Traversable</h3>
+               </div> 
+            <div class="coloumn-3">
+                <h3 id="ts">Traversable</h3>
                 <p>BSON is de&shy;signed to be tra&shy;versed eas&shy;ily. This is a vi&shy;tal prop&shy;erty in its role as the primary data rep&shy;res&shy;ent&shy;a&shy;tion for <a href="http://www.mongodb.org">Mon&shy;goDB</a>.</p>
-              </li>
-              <li>
-                <h3>Efficient</h3>
+               </div> 
+            <div class="coloumn-3">
+                <h3 id="eff">Efficient</h3>
                 <p>En&shy;cod&shy;ing data to BSON and de&shy;cod&shy;ing from BSON can be per&shy;formed very quickly in most lan&shy;guages due to the use of C data types.</p>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <div id="buttons">
-          <span class="button" id="first-button">
-            <a class="nav spec" href="spec.html">specification</a>
-          </span>
-          <span class="button">
-            <a class="nav lib" href="implementations.html">implementations</a>
-          </span>
-          <span class="button">
-            <a class="nav faq" href="faq.html" rel="address:faq">FAQ</a>
-          </span>
-          <span class="button">
-            <a class="nav" href="http://groups.google.com/group/bson">discussion</a>
-          </span>
-        </div>
-      <div id="ft">
-        <div>
-          <a href="http://creativecommons.org/publicdomain/zero/1.0/" id="cc" class="ro"><span>Creative Commons &mdash; CC0</span></a>
-        </div>
-      </div>
-    </div>
-    <script type="text/javascript">
+              </div>
+      </section>   
+   </article>  
+ </div>
+<footer>
+  <div align="center">
+    <div id="copyright">
+      <a href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="images/cc.png" alt="Creative Commons &mdash; CC0" height="120" width="130"></a>
+    </div> 
+    <div>
+     <> by <a href="https://github.com/Rohitkumary">Rohit</a>
+    </div> 
+  </div> 
+     <!-- Google Analytics Code Begins -->
+        <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
@@ -76,5 +70,7 @@
       var pageTracker = _gat._getTracker("UA-7301842-4");
       pageTracker._trackPageview();
       } catch(err) {}</script>
+      <!-- GA code ends here -->
+   </footer>    
   </body>
 </html>

@@ -1,10 +1,36 @@
-<html>
-<body>
-
-<h2 class="nojs">FAQ</h2>
-
-<div class="info" id="faq">
-            <h3>What is the point of BSON when it is no smaller than
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
+    <title>BSON - FAQ</title>
+     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+  </head>
+  <body>
+   <header class=menu>
+     <div class="menu" class="row">
+       <div align="center" id="logo">
+       <a href="index.html"><img src="images/log.png" alt="BSON" ></a>
+        </div>
+        <nav align="center">
+          <ul>
+          <li><a href="spec.html">Specification</a></li>
+          <li><a href="implementations.html">Implementations</a></li>
+          <li><a href="faq.html">FAQ</a></li> 
+          <li><a href="http://groups.google.com/group/bson">Discussion</a></li>
+         </ul>        
+        </nav>
+     </div> 
+   </header>
+<div class="main">
+   <article class="content">
+         <h1 align="center">FAQ</h1>   
+      <section>
+         <h3>What is the point of BSON when it is no smaller than
             JSON in some cases?</h3>
 
             <p>BSON is designed to be efficient in space, but in some
@@ -25,11 +51,11 @@
             types unavailable in JSON, notably the BinData and
             Date data types.</p>
 
-            <h3>What is a <tt>.bson</tt> file?</h3>
-            BSON files (by convention, using "<tt>.bson</tt>"
+            <h3>What is a <span>.bson</span> file?</h3>
+            BSON files (by convention, using "<span>.bson</span>"
             extension) contain zero or more BSON documents
             written contiguously to a flat file.  For example, the
-            MongoDB <tt>mongodump</tt>
+            MongoDB <span>mongodump</span>
             utility outputs BSON files. The <a href="https://www.github.com/dwight/bsontools">bsontools</a>
             utilities manipulate BSON files.
 
@@ -43,13 +69,13 @@
             <p>The best way to contribute to this site is to
             fork <a href="http://github.com/mongodb/bsonspec.org">the
             project</a> and send us a pull request.</p>
-</div>
-            <h2>Examples</h2>
-<div>
-            <p>The following are some example documents (in JavaScript
+       </section>   
+             <h2>Examples</h2>
+      <section>
+        <p>The following are some example documents (in JavaScript
             / Python style syntax) and their corresponding BSON
             representations.</p>
-
+<div style="overflow-x:auto;">
 <table>
 <tr>
 <td>
@@ -83,7 +109,30 @@
   \x00
 </pre></td>
 </tr></table>
-
 </div>
-</body>
+      </section>    
+   </article>  
+</div>
+  <footer>
+      <div align="center">
+    <div id="copyright">
+      <a href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="images/cc.png" alt="Creative Commons &mdash; CC0" height="120" width="130"></a>
+    </div> 
+    <div>
+     <> by <a href="https://github.com/Rohitkumary">Rohit</a>
+    </div> 
+  </div> 
+     <!-- Google Analytics Code Begins -->
+        <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-7301842-4");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+      <!-- GA code ends here -->
+   </footer>    
+  </body>
 </html>

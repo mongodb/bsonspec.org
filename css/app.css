@@ -433,6 +433,7 @@ footer{
      height: auto;
      width: 40%;
    display: inline-block;
+    margin: 0 auto;
 }
 
 }

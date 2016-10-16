@@ -436,3 +436,16 @@ footer{
 }
 
 }
+
+#copyright{
+    height: 60px;
+    width: 130px;
+    overflow: hidden;
+}
+#copyright img {
+    transform: translate3d(0px, 0px, 0px);
+     transition: transform .95s ease-in-out;
+}
+#copyright img:hover {
+    transform: translate3d(0px, -130px, 0px);
+}

@@ -1,11 +1,97 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-          "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE <html>
 <html>
   <head>
     <title>404 - Not Found</title>
-    <meta http-equiv="refresh" content="2;url=http://bsonspec.org/"/>
+     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+     <meta http-equiv="refresh" content="10;url=index.html"/>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.3/foundation.min.css">
+  <style>
+  body{
+    background-color:#FAFAFA;
+    font-family:"Helvatica",sans-serif;
+  } 
+  img{
+    display: block;
+    margin: auto;
+    width: 40%;
+  }
+
+ @media screen and (max-width: 768px) {
+   
+div{
+    padding:10px;
+    margin: 20px;
+  }
+  p,a{
+    font-size:20px;
+    color: #555;
+    text-align:center;
+  }
+  span{
+    font-size:15px;
+    color: #555;
+    padding: 10px;
+  }
+  .button{
+    padding:10px;
+    display: block;
+    margin: auto;
+    width: 200px;
+    font-size:16px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: #2ba6cb;
+    color: #fefefe; 
+  }
+
+ } 
+
+ @media screen and (min-width: 768px) { 
+  div{
+    padding:40px;
+    margin: 40px 40px 40px 40px;
+  }
+  p,a{
+    font-size:30px;
+    color: #555;
+    text-align:center;
+  }
+  span{
+    font-size:15px;
+    color: #555;
+    padding: 20px;
+  }
+  .button{
+    padding:15px;
+    display: block;
+    margin: auto;
+    width: 220px;
+    font-size:22px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: #2ba6cb;
+    color: #fefefe; 
+  }
+ }
+
+    </style>
   </head> 
   <body>
-    Not found - redirecting you to <a href="http://bsonspec.org">home</a>.
+   <div>
+   <img src="images/404.png">
+  </div>
+  <div>
+   <p>Uh Oh! Looks Like soomething broke.</p> 
+    <a href="index.html" class="button">Take me Home ></a>
+    <p><span>or - You'll be redirected to home in 10 seconds</span></p>
+  </div> 
   </body>
 </html>

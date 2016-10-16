@@ -1,0 +1,438 @@
+/**
+/* BSONSPEC.ORG
+/* Rohit Kumar
+/* v1.0.0
+/* major Update with Responsive support 
+**/
+
+html{
+     font-family: 'Roboto','Helvatica', sans-serif;
+    display: block;
+}
+
+body{ 
+     font-family: 'Roboto','Helvatica', sans-serif;
+    margin:0;
+    -webkit-hyphens: none; -moz-hyphens: none; hyphens: none;
+    font-family: 'Roboto', "Helvatica", sans-serif;
+    line-height: 1.8;
+    color: #525a61;
+    background-color: #fff;
+    margin:0 auto;
+}
+* {
+    box-sizing: border-box;
+}
+article,footer,header,nav,section,{
+  display: block; }
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+a:active,a:hover {
+  outline: 0; }
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+p{
+   font-size: 16px;
+   display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+   
+}
+shift{
+    text-indent: 50px;
+}
+
+i{
+  font-weight: 300;
+}
+
+h4{
+font-size: 16px;
+font-weight: 400;
+
+}
+
+.features #lw{
+color: #0079d1;
+}
+.features #ts{
+color: #e8400d;
+}
+.features #eff{
+color: #7a3497;
+}
+
+header{
+     position: relative;
+     z-index: 3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0,0,0,0.075);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    clear: both;
+}
+
+div{
+    display: block;
+}
+
+.menu ul{
+    list-style: none;
+    }
+
+.menu li a{
+    color: #fff;
+}
+
+tr:nth-child(even){
+     background: #f6f6f6;
+}
+
+span{
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+}
+
+/**
+/* CSS for All mobile devices 
+/* Edit without removing @media query for it to work
+**/
+
+@media only screen and (max-width: 768px) {
+
+h1{
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h2{
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h3{
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.menu li{
+    text-decoration: none;
+    padding-left: 10px;
+    cursor: pointer;
+    background-color: #2ba6cb;
+    border-bottom: 1px solid dodgerblue;
+    color: #efefef;
+    text-transform: uppercase;
+}
+
+.row{
+    
+    clear: both;
+   
+}
+
+nav{
+    height: auto;
+    width: 100%;
+    padding-right: 40px;
+   display: block;
+}
+.coloumn-3{
+  width: 100%;
+    padding: 10px;
+    display: block;
+    
+}
+
+.main{
+    margin: 0px 8px 0px 8px;
+    padding: 0;
+    display: block;
+    
+}
+
+table{
+    margin: 2px 5px 2px 5px;
+    padding: 5px; 
+    border-collapse: collapse;
+}
+tr{
+    padding: 3px 2px 3px 2px;
+}
+
+td{
+ padding: 3px;
+ border: 2px solid #f6f6f6;
+}
+
+footer{
+    display:block;
+    margin:0;
+    padding: 20px 10px 20px 10px;
+    background-color: #fff;
+    color: black;
+    background-color: #f7f7f7;
+    position: relative;
+    width: 100%;
+    clear: both;
+}
+
+.intro{
+    margin:2px;
+    padding:3px;
+}
+
+#logo{
+    height: auto;
+     width: 100%;
+   display: block;
+}
+}
+
+/**
+/* CSS for All iPads and Tablet devices 
+/* Edit without removing @media query for it to work
+**/
+
+@media only screen and (min-width: 768px) and (max-width:1000px) {
+
+h1{
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h3{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.menu li{
+   text-align: center;
+    text-decoration: none;
+   display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding:8px;
+    width: 24%;
+    font-size:16px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    background-color: #2ba6cb;
+    color: #fefefe; 
+}
+
+.row{
+    
+    clear: both;
+    padding: 5px;
+    min-height: 1px;
+     padding-left: 20px;
+    padding-right: 20px;
+   
+}
+
+nav{
+    height: auto;
+    width: 65%;
+   display: inline-block;
+}
+.coloumn-3{
+ width: 28%;
+    padding: 15px;
+    display: inline-block;  
+}
+
+.main{
+    display: block;
+    margin: 0px 25px 0px 25px;
+    padding: 5px 20px 5px 20px;
+}
+
+table{
+    margin: 5px 10px 5px 15px;
+    padding: 10px; 
+    border-collapse: collapse;
+}
+tr{
+   padding: 5px 4px 5px 4px;
+}
+
+td{
+ padding: 8px;
+ border: 2px solid #f6f6f6;
+}
+
+footer{
+    display:block;
+    margin:0;
+    padding: 20px;
+    background-color: #fff;
+    color: black;
+    background-color: #f7f7f7;
+    position: relative;
+    width: 100%;
+    clear: both;
+}
+
+.intro{
+     margin:15px;
+    padding:5px 60px 5px 60px;
+}
+
+#logo{
+     height: auto;
+     width: 30%;
+   display: inline-block;
+}
+
+}
+
+/**
+/* CSS for Desktop 
+/* Edit without removing @media query for it to work
+**/
+
+@media only screen and (min-width: 1000px) {
+
+body{ 
+     font-family: 'Roboto','Helvatica', sans-serif;
+    margin:0;
+    -webkit-hyphens: none; -moz-hyphens: none; hyphens: none;
+    font-family: 'Roboto', "Helvatica", sans-serif;
+    line-height: 1.8;
+    color: #525a61;
+    background-color: #fff;
+    max-width: 1366px;
+    max-height: 768px;
+     margin:0 auto;
+    border-right: 4px solid #f6f6f6; 
+    border-left: 4px solid #f6f6f6; 
+}
+
+h1{
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h2{
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.menu li{
+   text-align: center;
+    text-decoration: none;
+  display: inline-block;
+    padding-right: 7px;
+    padding-left: 7px;
+    padding:8px;
+    width: 24%;
+    font-size:16px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    background-color: #2ba6cb;
+    color: #fefefe; 
+}
+
+.row{
+    
+    clear: both;
+    padding: 2px;
+    min-height: 1px;
+     padding-left: 25px;
+    padding-right: 25px;
+   
+}
+
+nav{
+    height: auto;
+    width: 50%;
+   display: inline-block;
+}
+.coloumn-3{
+ width: 33%;
+    padding: 30px;
+    display: inline-block;  
+}
+
+.main{
+    display: block;
+    margin: 0px 40px 0px 40px;
+    padding: 5px 50px 10px 50px;
+    
+}
+
+table{
+    margin: 5px 10px 5px 15px;
+    padding: 10px; 
+    border-collapse: collapse;
+}
+tr{
+   padding: 5px 4px 5px 4px;
+}
+
+td{
+ padding: 8px;
+ border: 2px solid #f6f6f6;
+}
+
+footer{
+    display:block;
+    margin:0;
+    padding: 30px;
+    background-color: #fff;
+    color: black;
+    background-color: #f7f7f7;
+    position: relative;
+    width: 100%;
+    clear: both;
+}
+
+.intro{
+     margin:15px;
+    padding:5px 60px 5px 60px;
+}
+
+#logo{
+     height: auto;
+     width: 40%;
+   display: inline-block;
+}
+
+}

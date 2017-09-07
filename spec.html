@@ -308,7 +308,7 @@ the <code>document</code> non-terminal.</p>
   <li>\x80-\xFF "User defined" subtypes. The binary data can be anything.</li>
 </ul>
 </li>
-<li >Code w/ scope - The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>
+<li>Code w/ scope - The int32 is the length in bytes of the Javascript code string, including the null terminator. The string is JavaScript code, null-terminated. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>
 </ul>
 </p>
 

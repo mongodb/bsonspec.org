@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
+    <title>BSON (Binary JSON): Specification</title>
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/font-awesome.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">
+                    <a href="/">BSON {
+                        <span id="bits">
+                            <pre>01010100<br>11101011<br>10101110<br>01010101</pre>
+                        </span> }</a>
+                </h1>
+            </div>
+        </header>
+
+        <hr id="top-sep">
+
+        <h2>Specification Version 1.1</h2>
+
+        <p>BSON is a binary format in which zero or more ordered key/value pairs are stored as a single entity. We call this
+            entity a
+            <em>document</em>.</p>
+
+        <p>The following grammar specifies version 1.1 of the BSON standard. We've written the grammar using a pseudo-
+            <a href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form">BNF</a> syntax. Valid BSON data is represented by the
+            <code>document</code> non-terminal.</p>
+
+        <div>
+            <h3>Basic Types</h3>
+
+            <p>The following basic types are used as terminals in the rest of the grammar. Each type must be serialized in little-endian
+                format.
+            </p>
+
+
+            <table class="table">
+                <tr>
+                    <td>byte</td>
+                    <td>1 byte (8-bits)</td>
+                </tr>
+                <tr>
+                    <td>int32</td>
+                    <td>4 bytes (32-bit signed integer, two's complement)</td>
+                </tr>
+                <tr>
+                    <td>int64</td>
+                    <td>8 bytes (64-bit signed integer, two's complement)</td>
+                </tr>
+                <tr>
+                    <td>uint64</td>
+                    <td>8 bytes (64-bit unsigned integer)</td>
+                </tr>
+                <tr>
+                    <td>double</td>
+                    <td>8 bytes (64-bit IEEE 754-2008 binary floating point)</td>
+                </tr>
+                <tr>
+                    <td>decimal128</td>
+                    <td>16 bytes (128-bit IEEE 754-2008 decimal floating point)</td>
+                </tr>
+            </table>
+
+
+            <h3>Non-terminals</h3>
+
+            <p>The following specifies the rest of the BSON grammar. Note that quoted strings represent terminals, and should
+                be interpreted with C semantics (e.g.
+                <code>"\x01"</code> represents the byte
+                <code>0000 0001</code>). Also note that we use the
+                <code>*</code> operator as shorthand for repetition (e.g.
+                <code>("\x01"*2)</code> is
+                <code>"\x01\x01"</code>). When used as a unary operator,
+                <code>*</code> means that the repetition can occur 0 or more times.</p>
+
+
+            <table class="table">
+                <tr>
+                    <th>document</th>
+                    <td>::=</td>
+                    <td>int32&nbsp;e_list&nbsp;"\x00"</td>
+                    <td>BSON Document. int32 is the total number of bytes comprising the document.</td>
+                </tr>
+                <tr>
+                    <th>e_list</th>
+                    <td>::=</td>
+                    <td>element e_list</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>""</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>element</th>
+                    <td>::=</td>
+                    <td>"\x01" e_name double</td>
+                    <td>64-bit binary floating point</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x02" e_name string</td>
+                    <td>UTF-8 string</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x03"&nbsp;e_name&nbsp;document</td>
+                    <td>Embedded document</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x04" e_name document</td>
+                    <td>Array</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x05" e_name binary</td>
+                    <td>Binary data</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x06" e_name</td>
+                    <td>Undefined (value) &mdash;
+                        <em>Deprecated</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x07" e_name (byte*12)</td>
+                    <td>
+                        <a href="http://dochub.mongodb.org/core/objectids">ObjectId</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x08" e_name "\x00"</td>
+                    <td>Boolean "false"</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x08" e_name "\x01"</td>
+                    <td>Boolean "true"</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x09" e_name int64</td>
+                    <td>UTC datetime</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x0A" e_name</td>
+                    <td>Null value</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x0B" e_name cstring cstring</td>
+                    <td>Regular expression - The first cstring is the regex pattern, the second is the regex options string.
+                        Options are identified by characters, which must be stored in alphabetical order. Valid options are
+                        'i' for case insensitive matching, 'm' for multiline matching, 'x' for verbose mode, 'l' to make
+                        \w, \W, etc. locale dependent, 's' for dotall mode ('.' matches everything), and 'u' to make \w,
+                        \W, etc. match unicode.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x0C" e_name string (byte*12)</td>
+                    <td>DBPointer &mdash;
+                        <em>Deprecated</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x0D" e_name string</td>
+                    <td>JavaScript code</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x0E" e_name string</td>
+                    <td> Symbol.
+                        <em>Deprecated</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x0F" e_name code_w_s</td>
+                    <td>JavaScript code w/ scope</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x10" e_name int32</td>
+                    <td>32-bit integer</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x11" e_name uint64</td>
+                    <td>Timestamp</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x12" e_name int64</td>
+                    <td>64-bit integer</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x13" e_name decimal128</td>
+                    <td>
+                        <a href="https://github.com/mongodb/specifications/blob/master/source/bson-decimal128/decimal128.rst">128-bit decimal floating point</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\xFF" e_name</td>
+                    <td>Min key</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x7F" e_name</td>
+                    <td>Max key</td>
+                </tr>
+                <tr>
+                    <th>e_name</th>
+                    <td>::=</td>
+                    <td>cstring</td>
+                    <td>Key name</td>
+                </tr>
+                <tr>
+                    <th>string</th>
+                    <td>::=</td>
+                    <td>int32&nbsp;(byte*)&nbsp;"\x00"</td>
+                    <td>String - The int32 is the number bytes in the (byte*) + 1 (for the trailing '\x00'). The (byte*) is zero
+                        or more UTF-8 encoded characters.</td>
+                </tr>
+                <tr>
+                    <th>cstring</th>
+                    <td>::=</td>
+                    <td>(byte*) "\x00"</td>
+                    <td>Zero or more modified UTF-8 encoded characters followed by '\x00'. The (byte*) MUST NOT contain '\x00',
+                        hence it is not full UTF-8.</td>
+                </tr>
+                <tr>
+                    <th>binary</th>
+                    <td>::=</td>
+                    <td>int32 subtype (byte*)</td>
+                    <td>Binary - The int32 is the number of bytes in the (byte*).</td>
+                </tr>
+                <tr>
+                    <th>subtype</th>
+                    <td>::=</td>
+                    <td>"\x00"</td>
+                    <td>Generic binary subtype</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x01"</td>
+                    <td>Function</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x02"</td>
+                    <td>Binary (Old)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x03"</td>
+                    <td>UUID (Old)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x04"</td>
+                    <td>UUID</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x05"</td>
+                    <td>MD5</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>|</td>
+                    <td>"\x80"</td>
+                    <td>User defined</td>
+                </tr>
+                <tr>
+                    <th>code_w_s</th>
+                    <td>::=</td>
+                    <td>int32 string document</td>
+                    <td>Code w/ scope</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <h3>Notes</h3>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Array</strong> - The document for an array is a normal BSON document with integer values for the keys, starting
+                with 0 and continuing sequentially.
+                <br>For example, the array ['red', 'blue'] would be encoded as the document
+                <code>{'0':
+                'red', '1': 'blue'}</code>. The keys must be in ascending numerical order.</li>
+
+            <li class="list-group-item">
+                <strong>UTC datetime</strong> - The int64 is UTC milliseconds since the Unix epoch.</li>
+
+            <li class="list-group-item">
+                <strong>Timestamp</strong> - Special internal type used by MongoDB replication and sharding. First 4 bytes are an
+                increment, second 4 are a timestamp.</li>
+
+            <li class="list-group-item">
+                <strong>Min key</strong> - Special type which compares lower than all other possible BSON element values.</li>
+
+            <li class="list-group-item">
+                <strong>Max key</strong> - Special type which compares higher than all other possible BSON element values.</li>
+
+            <li class="list-group-item">
+                <strong>Generic binary subtype</strong> - This is the most commonly used binary subtype and should be the 'default'
+                for drivers and tools.
+            </li>
+            <li class="list-group-item">The BSON "binary" or "BinData" datatype is used to represent arrays of bytes. It is somewhat analogous to the
+                Java notion of a ByteArray. BSON binary values have a
+                <em>subtype</em>. This is used to indicate what kind of data is in the byte array. Subtypes from zero to 127
+                are predefined or reserved. Subtypes from 128-255 are user-defined.
+                <ul>
+                    <li>
+                        <strong>\x02 Binary (Old)</strong> - This used to be the default subtype, but was deprecated in favor of
+                        \x00. Drivers and tools should be sure to handle \x02 appropriately. The structure of the binary
+                        data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32
+                        is the number of bytes in the repetition.</li>
+                    <li>
+                        <strong>\x03 UUID (Old)</strong> - This used to be the UUID subtype, but was deprecated in favor of \x04.
+                        Drivers and tools for languages with a native UUID type should handle \x03 appropriately.</li>
+                    <li>
+                        <strong>\x80-\xFF</strong> "User defined" subtypes. The binary data can be anything.</li>
+                </ul>
+            </li>
+            <li class="list-group-item">
+                <strong>Code w/ scope</strong> - The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript
+                code. The document is a mapping from identifiers to values, representing the scope in which the string should
+                be evaluated.
+            </li>
+        </ul>
+
+        <br>
+
+        <section class=" row" id="buttons">
+            <div class="col-sm-8 offset-sm-2 text-center">
+                <a href="index.html" class="btn btn-outline-primary" role="button">home</a>
+                <a href="specification.html" class="btn btn-outline-primary active" role="button">specification</a>
+                <a href="implementations.html" class="btn btn-outline-primary" role="button">implementations</a>
+                <a href="faq.html" class="btn btn-outline-primary" role="button">FAQ</a>
+                <a href="https://groups.google.com/group/bson" class="btn btn-outline-primary" role="button">discussion</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer class="row" id="footer">
+            <div class="col-sm-12 text-center">
+                <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons &mdash; CC0</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/popper.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
+    
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-7301842-4");
+            pageTracker._trackPageview();
+        } catch (err) { }
+    </script>
+</body>
+
+</html>

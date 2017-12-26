@@ -1,0 +1,43 @@
+header h1 {
+    font-size: 6em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#top-sep {
+    margin-top: 0;
+}
+
+hr {
+    margin: 12px;
+}
+
+#bits pre {
+    vertical-align: middle;
+    font-size: .15em;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+h1 a:hover {
+    text-decoration: none;
+}
+
+.features-item {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.features-item i {
+    font-size: 5em;
+    color: #007bff;
+}
+
+.faq-item > a{
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+#footer {
+    height: 40px;
+}

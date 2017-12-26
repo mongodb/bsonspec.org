@@ -1,82 +1,111 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
     <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
     <title>BSON (Binary JSON) Serialization</title>
-    <link rel="stylesheet" href="css/reset-fonts-grids.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-  </head>
-  <body>
-    <div id="doc" class="yui-t7">
-      <div id="hd">
-        <h1><a href="#/">BSON</a></h1>
-        <div id="graphic">
-          <div id="right-brace" class="brace">}</div>
-          <div id="bits">
-            01010100<br>
-            11101011<br>
-            10101110<br>
-            01010101
-          </div>
-          <div id="left-brace" class="brace">{</div>
-        </div>
-      </div>
-      <div id="bd">
-        <div class="yui-g intro">
-          <div class="yui-u first">
-            <p><abbr title="Binary JSON">BSON</abbr> <span class="pronounce">[bee &middot; sahn]</span>, short for Bin&shy;ary <a href="http://json.org"><abbr title="JavaScript Object Notation">JSON</abbr></a>, is a bin&shy;ary-en&shy;coded seri&shy;al&shy;iz&shy;a&shy;tion of JSON-like doc&shy;u&shy;ments. Like JSON, BSON sup&shy;ports the em&shy;bed&shy;ding of doc&shy;u&shy;ments and ar&shy;rays with&shy;in oth&shy;er doc&shy;u&shy;ments and ar&shy;rays. BSON also con&shy;tains ex&shy;ten&shy;sions that al&shy;low rep&shy;res&shy;ent&shy;a&shy;tion of data types that are not part of the JSON spec. For ex&shy;ample, BSON has a Date type and a BinData type.</p>
-            <p>BSON can be com&shy;pared to bin&shy;ary inter&shy;change for&shy;mats, like <a href="http://code.google.com/p/protobuf/">Proto&shy;col Buf&shy;fers</a>. BSON is more "schema-less" than Proto&shy;col Buf&shy;fers, which can give it an ad&shy;vant&shy;age in flex&shy;ib&shy;il&shy;ity but also a slight dis&shy;ad&shy;vant&shy;age in space ef&shy;fi&shy;ciency (BSON has over&shy;head for field names with&shy;in the seri&shy;al&shy;ized data).</p>
-          </div>
-          <div class="yui-u">
-            <p>BSON was de&shy;signed to have the fol&shy;low&shy;ing three char&shy;ac&shy;ter&shy;ist&shy;ics:</p>
-            <ol>
-              <li>
-                <h3>Lightweight</h3>
-                <p>Keep&shy;ing spa&shy;tial over&shy;head to a min&shy;im&shy;um is im&shy;port&shy;ant for any data rep&shy;res&shy;ent&shy;a&shy;tion format, es&shy;pe&shy;cially when used over the net&shy;work.</p>
-              </li>
-              <li>
-                <h3>Traversable</h3>
-                <p>BSON is de&shy;signed to be tra&shy;versed eas&shy;ily. This is a vi&shy;tal prop&shy;erty in its role as the primary data rep&shy;res&shy;ent&shy;a&shy;tion for <a href="http://www.mongodb.org">Mon&shy;goDB</a>.</p>
-              </li>
-              <li>
-                <h3>Efficient</h3>
-                <p>En&shy;cod&shy;ing data to BSON and de&shy;cod&shy;ing from BSON can be per&shy;formed very quickly in most lan&shy;guages due to the use of C data types.</p>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <div id="buttons">
-          <span class="button" id="first-button">
-            <a class="nav spec" href="spec.html">specification</a>
-          </span>
-          <span class="button">
-            <a class="nav lib" href="implementations.html">implementations</a>
-          </span>
-          <span class="button">
-            <a class="nav faq" href="faq.html" rel="address:faq">FAQ</a>
-          </span>
-          <span class="button">
-            <a class="nav" href="https://groups.google.com/group/bson">discussion</a>
-          </span>
-        </div>
-      <div id="ft">
-        <div>
-          <a href="http://creativecommons.org/publicdomain/zero/1.0/" id="cc" class="ro"><span>Creative Commons &mdash; CC0</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/font-awesome.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
 
-<script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-7301842-4");
-  pageTracker._trackPageview();
-  } catch(err) {}
-</script>
+<body>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">
+                    <a href="/">BSON {
+                        <span id="bits">
+                            <pre>01010100<br>11101011<br>10101110<br>01010101</pre>
+                        </span> }</a>
+                </h1>
+            </div>
+        </header>
+
+        <hr id="top-sep">
+
+        <section class="row" id="home">
+            <div class="col-sm-12">
+                <p>
+                    <abbr title="Binary JSON">BSON</abbr>
+                    <span class="pronounce">[bee &middot; sahn]</span>, short for Binary
+                    <a href="http://json.org">
+                        <abbr title="JavaScript Object Notation">JSON</abbr>
+                    </a>, is a binary-encoded serialization of JSON-like documents. Like JSON, BSON supports the embedding of
+                    documents and arrays within other documents and arrays. BSON also contains extensions that allow representation
+                    of data types that are not part of the JSON spec. For example, BSON has a Date type and a BinData type.
+                </p>
+
+                <p>BSON can be compared to binary interchange formats, like
+                    <a href="http://code.google.com/p/protobuf/">Protocol Buffers</a>. BSON is more "schema-less" than Protocol Buffers, which can give it an advantage
+                    in flexibility but also a slight disadvantage in space efficiency (BSON has overhead for field names
+                    within the serialized data).
+                </p>
+            </div>
+        </section>
+
+        <section class="row" id="features">
+            <div class="col-sm-12">
+                <p>BSON was designed to have the following three characteristics:</p>
+            </div>
+
+            <div class="col-sm-4 text-center features-item">
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+                <h3>Lightweight</h3>
+                <p>Keeping spatial overhead to a minimum is important for any data representation format, especially when used
+                    over the network.</p>
+            </div>
+
+            <div class="col-sm-4 text-center features-item">
+                <i class="fa fa-fire" aria-hidden="true"></i>
+                <h3>Traversable</h3>
+                <p>BSON is designed to be traversed easily. This is a vital property in its role as the primary data representation
+                    for
+                    <a href="http://www.mongodb.org">MongoDB</a>.</p>
+            </div>
+
+            <div class="col-sm-4 text-center features-item">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <h3>Efficient</h3>
+                <p>Encoding data to BSON and decoding from BSON can be performed very quickly in most languages due to the use
+                    of C data types.</p>
+            </div>
+        </section>
+
+        <section class=" row" id="buttons">
+            <div class="col-sm-8 offset-sm-2 text-center">
+                    <a href="index.html" class="btn btn-outline-primary active" role="button">home</a>
+                <a href="specification.html" class="btn btn-outline-primary" role="button">specification</a>
+                <a href="implementations.html" class="btn btn-outline-primary" role="button">implementations</a>
+                <a href="faq.html" class="btn btn-outline-primary" role="button">FAQ</a>
+                <a href="https://groups.google.com/group/bson" class="btn btn-outline-primary" role="button">discussion</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer class="row" id="footer">
+            <div class="col-sm-12 text-center">
+                <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons &mdash; CC0</span></a>
+            </div>
+        </footer>
+    </div>
+    <!-- container ends here -->
+
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-7301842-4");
+            pageTracker._trackPageview();
+        } catch (err) { }
+    </script>
 </body>
+
 </html>

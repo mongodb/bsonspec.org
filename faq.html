@@ -1,104 +1,172 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
+
 <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
     <title>BSON (Binary JSON): FAQ</title>
-    <link rel="stylesheet" href="css/spec.css" type="text/css">
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/font-awesome.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
 </head>
+
 <body>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">
+                    <a href="/">BSON {
+                        <span id="bits">
+                            <pre>01010100<br>11101011<br>10101110<br>01010101</pre>
+                        </span> }</a>
+                </h1>
+            </div>
+        </header>
 
-<h2 class="nojs">FAQ</h2>
+        <hr id="top-sep">
 
-<div class="info" id="faq">
-            <h3>What is the point of BSON when it is no smaller than
-            JSON in some cases?</h3>
+        <h2>FAQ</h2>
 
-            <p>BSON is designed to be efficient in space, but in some
-            cases is not much more efficient than JSON. In some cases
-            BSON uses even more space than JSON. The reason for this
-            is another of the BSON design goals: traversability. BSON
-            adds some "extra" information to documents, like length of
-            strings and subobjects. This makes traversal faster.
+        <div id="faq-accordion" data-children=".faq-item">
+
+            <div class="faq-item">
+                <a data-toggle="collapse" data-parent="#faq-accordion" href="#faq01" aria-expanded="true" aria-controls="faq01">
+                    What is the point of BSON when it is no smaller than JSON in some cases?
+                </a>
+                <div id="faq01" class="collapse" role="tabpanel">
+                    <p>BSON is designed to be efficient in space, but in some cases is not much more efficient than JSON. In
+                        some cases BSON uses even more space than JSON. The reason for this is another of the BSON design
+                        goals: traversability. BSON adds some "extra" information to documents, like length of strings and
+                        subobjects. This makes traversal faster.
+                    </p>
+
+                    <p>BSON is also designed to be fast to encode and decode. For example, integers are stored as 32 (or 64)
+                        bit integers, so they don't need to be parsed to and from text. This uses more space than JSON for
+                        small integers, but is much faster to parse.</p>
+
+                    <p>In addition to compactness, BSON adds additional data types unavailable in JSON, notably the BinData
+                        and Date data types.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- faq01 ends -->
+
+        <div class="faq-item">
+            <a data-toggle="collapse" data-parent="#faq-accordion" href="#faq02" aria-expanded="true" aria-controls="faq01">
+                What is a
+                <tt>.bson</tt> file?
+            </a>
+            <div id="faq02" class="collapse" role="tabpanel">
+                <p>
+                    BSON files (by convention, using "
+                    <tt>.bson</tt>" extension) contain zero or more BSON documents written contiguously to a flat file. For example,
+                    the MongoDB
+                    <tt>mongodump</tt> utility outputs BSON files. The
+                    <a href="https://www.github.com/dwight/bsontools">bsontools</a>
+                    utilities manipulate BSON files.
+                </p>
+
+            </div>
+        </div>
+        <!-- faq02 ends -->
+
+        <div class="faq-item">
+            <a data-toggle="collapse" data-parent="#faq-accordion" href="#faq03" aria-expanded="true" aria-controls="faq01">
+                Where can I get more help/information?
+            </a>
+            <div id="faq03" class="collapse" role="tabpanel">
+                <p>The best place to ask questions about BSON is on the
+                    <a href="https://groups.google.com/group/bson">BSON mailing list</a>.
+                </p>
+
+            </div>
+        </div>
+        <!-- faq03 ends -->
+
+        <div class="faq-item">
+            <a data-toggle="collapse" data-parent="#faq-accordion" href="#faq04" aria-expanded="true" aria-controls="faq01">
+                How can I contribute or make fixes to this site?
+            </a>
+            <div id="faq04" class="collapse" role="tabpanel">
+                <p>The best way to contribute to this site is to fork the
+                    <a href="https://github.com/mongodb/bsonspec.org">bsonspec.org</a> project on GitHub and submit a pull request.</p>
+            </div>
+        </div>
+        <!-- faq04 ends -->
+
+        <h2>Examples</h2>
+        <div>
+            <p>The following are some example documents (in JavaScript / Python style syntax) and their corresponding BSON representations.
             </p>
 
-            <p>BSON is also designed to be fast to encode and
-            decode. For example, integers are stored as 32 (or 64) bit
-            integers, so they don't need to be parsed to and from
-            text. This uses more space than JSON for small integers,
-            but is much faster to parse.</p>
+            <div class="row">
+                <div class="col-sm-3">
+                    <pre>{"hello": "world"}</pre>
+                </div>
+                <div class="col-sm-9">
+                    <pre>
+\x16\x00\x00\x00                   // total document size
+\x02                               // 0x02 = type String
+hello\x00                          // field name
+\x06\x00\x00\x00world\x00          // field value
+\x00                               // 0x00 = type EOO ('end of object')
+                    </pre>
+                </div>
 
-            <p>In addition to compactness, BSON adds additional data
-            types unavailable in JSON, notably the BinData and
-            Date data types.</p>
+                <div class="col-sm-3">
+                    <pre>{"BSON": ["awesome", 5.05, 1986]}</pre>
+                </div>
+                <div class="col-sm-9">
+                    <pre>
+\x31\x00\x00\x00
+\x04BSON\x00
+\x26\x00\x00\x00
+\x02\x30\x00\x08\x00\x00\x00awesome\x00
+\x01\x31\x00\x33\x33\x33\x33\x33\x33\x14\x40
+\x10\x32\x00\xc2\x07\x00\x00
+\x00
+\x00
+                    </pre>
+                </div>
+            </div>
+        </div>
 
-            <h3>What is a <tt>.bson</tt> file?</h3>
-            BSON files (by convention, using "<tt>.bson</tt>"
-            extension) contain zero or more BSON documents
-            written contiguously to a flat file.  For example, the
-            MongoDB <tt>mongodump</tt>
-            utility outputs BSON files. The <a href="https://www.github.com/dwight/bsontools">bsontools</a>
-            utilities manipulate BSON files.
+        <section class=" row" id="buttons">
+            <div class="col-sm-8 offset-sm-2 text-center">
+                <a href="index.html" class="btn btn-outline-primary" role="button">home</a>
+                <a href="specification.html" class="btn btn-outline-primary" role="button">specification</a>
+                <a href="implementations.html" class="btn btn-outline-primary" role="button">implementations</a>
+                <a href="faq.html" class="btn btn-outline-primary active" role="button">FAQ</a>
+                <a href="https://groups.google.com/group/bson" class="btn btn-outline-primary" role="button">discussion</a>
+            </div>
+        </section>
 
-            <h3>Where can I get more help/information?</h3>
-            <p>The best place to ask questions about BSON is on
-            the <a href="https://groups.google.com/group/bson">BSON
-            mailing list</a>.
+        <hr>
 
-            <h3>How can I contribute or make fixes to this site?</h3>
-            <p>The best way to contribute to this site is to
-            fork the <a href="https://github.com/mongodb/bsonspec.org">bsonspec.org</a>
-            project on GitHub and submit a pull request.</p>
-</div>
-            <h2>Examples</h2>
-<div>
-            <p>The following are some example documents (in JavaScript
-            / Python style syntax) and their corresponding BSON
-            representations.</p>
+        <footer class="row" id="footer">
+            <div class="col-sm-12 text-center">
+                <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons &mdash; CC0</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/popper.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
 
-<table>
-<tr>
-<td>
-<pre>
- {"hello": "world"}
-</pre>
-</td>
-<td> &rarr; </td>
-<td><pre>
-
-  \x16\x00\x00\x00                   // total document size
-  \x02                               // 0x02 = type String
-  hello\x00                          // field name
-  \x06\x00\x00\x00world\x00          // field value
-  \x00                               // 0x00 = type EOO ('end of object')
-
-</pre></td>
-</tr><tr>
-<td><pre>
- {"BSON": ["awesome", 5.05, 1986]}
-</pre></td>
-<td> &rarr; </td>
-<td><pre>
-  \x31\x00\x00\x00
-  \x04BSON\x00
-  \x26\x00\x00\x00
-  \x02\x30\x00\x08\x00\x00\x00awesome\x00
-  \x01\x31\x00\x33\x33\x33\x33\x33\x33\x14\x40
-  \x10\x32\x00\xc2\x07\x00\x00
-  \x00
-  \x00
-</pre></td>
-</tr></table>
-
-</div>
-
-<script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-7301842-4");
-  pageTracker._trackPageview();
-  } catch(err) {}
-</script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-7301842-4");
+            pageTracker._trackPageview();
+        } catch (err) { }
+    </script>
 </body>
+
 </html>

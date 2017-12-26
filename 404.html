@@ -1,20 +1,66 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="google-site-verification" content="mgXKU4eJahd8ymdcdK9W5XHEzt0GmpovTXx2saqSQEk">
     <title>404 - Not Found</title>
-    <meta http-equiv="refresh" content="2;url=http://bsonspec.org/"/>
-  </head> 
-  <body>
-    <p>Not found - redirecting you to <a href="http://bsonspec.org">home</a>.</p>
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">
+                    <a href="/">BSON {
+                        <span id="bits">
+                            <pre>01010100<br>11101011<br>10101110<br>01010101</pre>
+                        </span> }</a>
+                </h1>
+            </div>
+        </header>
+
+        <hr id="top-sep">
+
+        <p>Not found - redirecting you to
+            <a href="http://bsonspec.org">home</a>.</p>
+
+        <section class=" row" id="buttons">
+            <div class="col-sm-8 offset-sm-2 text-center">
+                <a href="index.html" class="btn btn-outline-primary active" role="button">home</a>
+                <a href="specification.html" class="btn btn-outline-primary" role="button">specification</a>
+                <a href="implementations.html" class="btn btn-outline-primary" role="button">implementations</a>
+                <a href="faq.html" class="btn btn-outline-primary" role="button">FAQ</a>
+                <a href="https://groups.google.com/group/bson" class="btn btn-outline-primary" role="button">discussion</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer class="row" id="footer">
+            <div class="col-sm-12 text-center">
+                <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons &mdash; CC0</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+    <!-- container ends here -->
+
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
     <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
-      try {
-      var pageTracker = _gat._getTracker("UA-7301842-4");
-      pageTracker._trackPageview();
-      } catch(err) {}
+        try {
+            var pageTracker = _gat._getTracker("UA-7301842-4");
+            pageTracker._trackPageview();
+        } catch (err) { }
     </script>
-  </body>
+</body>
+
 </html>

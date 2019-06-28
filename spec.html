@@ -313,7 +313,6 @@ the <code>document</code> non-terminal.</p>
   <ul>
     <li>\x02 Binary (Old) - This used to be the default subtype, but was deprecated in favor of \x00. Drivers and tools should be sure to handle \x02 appropriately. The structure of the binary data (the byte* array in the binary non-terminal) must be an int32 followed by a (byte*). The int32 is the number of bytes in the repetition.</li>
     <li>\x03 UUID (Old) - This used to be the UUID subtype, but was deprecated in favor of \x04. Drivers and tools for languages with a native UUID type should handle \x03 appropriately.</li>
-    <li>\x06 Ciphertext - This is used to represent the encrypted payload for Client Side Encryption.</li>
     <li>\x80-\xFF "User defined" subtypes. The binary data can be anything.</li>
   </ul>
   </li>

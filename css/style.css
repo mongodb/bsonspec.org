@@ -12,7 +12,7 @@ div.intro p {
     font-style: italic;
 }
 #hd {
-    height: 9em;
+    height: 11em;
     position: relative;
     overflow: hidden;
     border-bottom: 3px solid black;
@@ -32,7 +32,7 @@ div.intro p {
 }
 #hd #graphic {
     position: absolute;
-    top: -1em;
+    top: 1em;
     right: 8em;
 }
 #hd #left-brace {

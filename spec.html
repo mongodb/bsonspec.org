@@ -174,13 +174,13 @@ the <code>document</code> non-terminal.</p>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">"\x0E" e_name string</td>
-                    <td> Symbol. <em>Deprecated</em></td>
+                    <td> Symbol. &mdash; <em>Deprecated</em></td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">"\x0F" e_name code_w_s</td>
-                    <td>JavaScript code w/ scope</td>
+                    <td>JavaScript code w/ scope &mdash; <em>Deprecated</em></td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
@@ -294,7 +294,7 @@ the <code>document</code> non-terminal.</p>
                     <td class="fix nt">code_w_s</td>
                     <td class="fix op">::=</td>
                     <td class="fix ex">int32 string document</td>
-                    <td >Code w/ scope</td>
+                    <td >Code w/ scope &mdash; <em>Deprecated</em></td>
                   </tr>
                 </table>
               </div>
@@ -316,7 +316,7 @@ the <code>document</code> non-terminal.</p>
     <li>\x80-\xFF "User defined" subtypes. The binary data can be anything.</li>
   </ul>
   </li>
-  <li>Code w/ scope - The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>
+  <li>Code w/ scope - <em>Deprecated.</em> The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>
 </ul>
 
 <script type="text/javascript">

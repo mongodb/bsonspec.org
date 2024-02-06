@@ -341,7 +341,7 @@ the <code>document</code> non-terminal.</p>
     but was deprecated in favor of the <code>signed_byte(4)</code> type. Drivers
     and tools for languages with a native UUID type should handle
     the <code>unsigned_byte(3)</code> type appropriately.</li>
-    <li>128-255 "User defined" subtypes. The binary data can be anything.</li>
+    <li><code>unsigned_byte(128)&mdash;unsigned_byte(255)</code> User defined subtypes. The binary data can be anything.</li>
   </ul>
   </li>
   <li>Code with scope - <em>Deprecated.</em> The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>

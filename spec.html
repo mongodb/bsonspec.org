@@ -35,6 +35,10 @@ the <code>document</code> non-terminal.</p>
                     <td>1 byte representation of a null value (0000 0000)</td>
                   </tr>
                   <tr>
+                    <td class="t">signed_byte(n)</td>
+                    <td>An 8-bit, two's complement signed integer for which the value is <code>n</code></td>
+                  </tr>
+                  <tr>
                     <td class="t">int32</td>
                     <td>4 bytes (32-bit signed integer, two's complement)</td>
                   </tr>
@@ -60,10 +64,7 @@ the <code>document</code> non-terminal.</p>
               <h3>Non-terminals</h3>
 
               <p>The following specifies the rest of the BSON
-              grammar. We use the notation <code>signed_byte(n)</code>
-              to represent a terminal consisting of an 8-bit, two's
-              complement signed integer for which the value is <code>n</code>.
-              Also note that we use the <code>*</code> operator as
+              grammar. Note that we use the <code>*</code> operator as
               shorthand for repetition (e.g. <code>(byte*2)</code>
               is <code>byte byte</code>). When used as a unary
               operator, <code>*</code> means that the repetition can
@@ -74,7 +75,7 @@ the <code>document</code> non-terminal.</p>
                   <tr>
                     <td class="fix nt">document</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">int32&nbsp;e_list&nbsp;null_byte</td>
+                    <td class="fix ex">int32 e_list null_byte</td>
                     <td >BSON Document. int32 is the total number of bytes comprising the document.</td>
                   </tr>
                   <tr class="section">
@@ -98,14 +99,14 @@ the <code>document</code> non-terminal.</p>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">2 e_name string</td>
+                    <td class="fix ex">signed_byte(2) e_name string</td>
                     <td>UTF-8 string</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">signed_byte(3) e_name document</td>
-                    <td>Embedded document or object</td>
+                    <td>Embedded document</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
@@ -134,13 +135,13 @@ the <code>document</code> non-terminal.</p>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(8) e_name 0</td>
+                    <td class="fix ex">signed_byte(8) e_name signed_byte(0)</td>
                     <td>Boolean - false</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(8) e_name 1</td>
+                    <td class="fix ex">signed_byte(8) e_name signed_byte(1)</td>
                     <td>Boolean - true</td>
                   </tr>
                   <tr>
@@ -230,7 +231,7 @@ the <code>document</code> non-terminal.</p>
                   <tr class="section">
                     <td class="fix nt">string</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">int32&nbsp;(byte*)&nbsp;null_byte</td>
+                    <td class="fix ex">int32 (byte*) null_byte</td>
                     <td >String - The int32 is the number bytes in the
                     (byte*) + 1 (for the trailing null byte). The (byte*) is
                     zero or more UTF-8 encoded characters.</td>
@@ -252,7 +253,7 @@ the <code>document</code> non-terminal.</p>
                   <tr class="section">
                     <td class="fix nt">subtype</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">null_byte</td>
+                    <td class="fix ex">signed_byte(0)</td>
                     <td >Generic binary subtype</td>
                   </tr>
                   <tr>
@@ -301,7 +302,7 @@ the <code>document</code> non-terminal.</p>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
                     <td class="fix ex">signed_byte(128)</td>
-                    <td >User defined custom data</td>
+                    <td >User defined</td>
                   </tr>
                   <tr class="section">
                     <td class="fix nt">code_w_s</td>
@@ -325,7 +326,7 @@ the <code>document</code> non-terminal.</p>
   <li>The BSON "binary" or "BinData" datatype is used to represent arrays of bytes. It is somewhat analogous to the Java notion of a ByteArray. BSON binary values have a <em>subtype</em>. This is used to indicate what kind of data is in the byte array. Subtypes from zero to 127 are predefined or reserved. Subtypes from 128-255 are user-defined.
   <ul>
     <li>signed_byte(2) Binary (Old) - This used to be the default
-    subtype, but was deprecated in favor of <code>null_byte</code>.
+    subtype, but was deprecated in favor of <code>signed_byte(0)</code>.
     Drivers and tools should be sure to handle <code>signed_byte(2)</code>
     appropriately. The structure of the binary data (the byte* array in
     the binary non-terminal) must be an int32 followed by a (byte*). The

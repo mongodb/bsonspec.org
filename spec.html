@@ -31,12 +31,12 @@ the <code>document</code> non-terminal.</p>
                     <td>1 byte (8-bits)</td>
                   </tr>
                   <tr>
-                    <td class="t">null_byte</td>
-                    <td>1 byte representation of a null value (0000 0000)</td>
+                    <td class="t">signed_byte(n)</td>
+                    <td>8-bit, two's complement signed integer for which the value is <code>n</code></td>
                   </tr>
                   <tr>
-                    <td class="t">signed_byte(n)</td>
-                    <td>An 8-bit, two's complement signed integer for which the value is <code>n</code></td>
+                    <td class="t">unsigned_byte(n)</td>
+                    <td>8-bit unsigned integer for which the value is <code>n</code></td>
                   </tr>
                   <tr>
                     <td class="t">int32</td>
@@ -75,7 +75,7 @@ the <code>document</code> non-terminal.</p>
                   <tr>
                     <td class="fix nt">document</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">int32 e_list null_byte</td>
+                    <td class="fix ex">int32 e_list unsigned_byte(0)</td>
                     <td >BSON Document. int32 is the total number of bytes comprising the document.</td>
                   </tr>
                   <tr class="section">
@@ -135,7 +135,7 @@ the <code>document</code> non-terminal.</p>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(8) e_name signed_byte(0)</td>
+                    <td class="fix ex">signed_byte(8) e_name unsigned_byte(0)</td>
                     <td>Boolean - false</td>
                   </tr>
                   <tr>
@@ -231,7 +231,7 @@ the <code>document</code> non-terminal.</p>
                   <tr class="section">
                     <td class="fix nt">string</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">int32 (byte*) null_byte</td>
+                    <td class="fix ex">int32 (byte*) unsigned_byte(0)</td>
                     <td >String - The int32 is the number bytes in the
                     (byte*) + 1 (for the trailing null byte). The (byte*) is
                     zero or more UTF-8 encoded characters.</td>
@@ -239,10 +239,10 @@ the <code>document</code> non-terminal.</p>
                   <tr class="section">
                     <td class="fix nt">cstring</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">(byte*) null_byte</td>
+                    <td class="fix ex">(byte*) unsigned_byte(0)</td>
                     <td >Zero or more modified UTF-8 encoded characters
                     followed by the null byte. The (byte*) MUST NOT contain
-                    <code>null_byte</code>, hence it is not full UTF-8.</td>
+                    <code>unsigned_byte(0)</code>, hence it is not full UTF-8.</td>
                   </tr>
                   <tr class="section">
                     <td class="fix nt">binary</td>
@@ -253,55 +253,55 @@ the <code>document</code> non-terminal.</p>
                   <tr class="section">
                     <td class="fix nt">subtype</td>
                     <td class="fix op">::=</td>
-                    <td class="fix ex">signed_byte(0)</td>
+                    <td class="fix ex">unsigned_byte(0)</td>
                     <td >Generic binary subtype</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(1)</td>
+                    <td class="fix ex">unsigned_byte(1)</td>
                     <td>Function</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(2)</td>
+                    <td class="fix ex">unsigned_byte(2)</td>
                     <td >Binary (Old)</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(3)</td>
+                    <td class="fix ex">unsigned_byte(3)</td>
                     <td >UUID (Old)</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(4)</td>
+                    <td class="fix ex">unsigned_byte(4)</td>
                     <td>UUID</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(5)</td>
+                    <td class="fix ex">unsigned_byte(5)</td>
                     <td>MD5</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(6)</td>
+                    <td class="fix ex">unsigned_byte(6)</td>
                     <td><a href="https://github.com/mongodb/specifications/blob/master/source/client-side-encryption/subtype6.rst">Encrypted BSON value</a></td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(7)</td>
+                    <td class="fix ex">unsigned_byte(7)</td>
                     <td>Compressed BSON column</td>
                   </tr>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(128)</td>
+                    <td class="fix ex">[unsigned_byte(128), unsigned_byte(255)]</td>
                     <td >User defined</td>
                   </tr>
                   <tr class="section">
@@ -325,17 +325,21 @@ the <code>document</code> non-terminal.</p>
   <li>Generic binary subtype - This is the most commonly used binary subtype and should be the 'default' for drivers and tools.</li>
   <li>The BSON "binary" or "BinData" datatype is used to represent arrays of bytes. It is somewhat analogous to the Java notion of a ByteArray. BSON binary values have a <em>subtype</em>. This is used to indicate what kind of data is in the byte array. Subtypes from zero to 127 are predefined or reserved. Subtypes from 128-255 are user-defined.
   <ul>
-    <li>signed_byte(2) Binary (Old) - This used to be the default
-    subtype, but was deprecated in favor of <code>signed_byte(0)</code>.
+    <li><code>signed_byte(2)</code> Binary (Old) - This used to be the default
+    subtype, but was deprecated in favor of the
+    <code>unsigned_byte(0)</code> type.
     Drivers and tools should be sure to handle <code>signed_byte(2)</code>
     appropriately. The structure of the binary data (the byte* array in
     the binary non-terminal) must be an int32 followed by a (byte*). The
     int32 is the number of bytes in the repetition.</li>
-    <li>signed_byte(3) UUID (Old) - This used to be the UUID subtype, but was deprecated in favor of <code>signed_byte(4)</code>. Drivers and tools for languages with a native UUID type should handle <code>signed_byte(3)</code> appropriately.</li>
+    <li><code>signed_byte(3)</code> UUID (Old) - This used to be the UUID subtype,
+    but was deprecated in favor of the <code>signed_byte(4)</code> type. Drivers
+    and tools for languages with a native UUID type should handle
+    the <code>signed_byte(3)</code> type appropriately.</li>
     <li>128-255 "User defined" subtypes. The binary data can be anything.</li>
   </ul>
   </li>
-  <li>Code w/ scope - <em>Deprecated.</em> The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>
+  <li>Code with scope - <em>Deprecated.</em> The int32 is the length in bytes of the entire code_w_s value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</li>
 </ul>
 
 <script type="text/javascript">

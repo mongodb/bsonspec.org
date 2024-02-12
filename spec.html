@@ -25,7 +25,7 @@ the <code>document</code> non-terminal.</p>
               little-endian format.</p>
 
               <div class="tb">
-                <table>
+                <table style="width:100%">
                   <tr>
                     <td class="t">byte</td>
                     <td>1 byte (8-bits)</td>
@@ -71,7 +71,7 @@ the <code>document</code> non-terminal.</p>
               occur 0 or more times.</p>
 
               <div class="tb">
-                <table>
+                <table style="width:100%">
                   <tr>
                     <td class="fix nt">document</td>
                     <td class="fix op">::=</td>
@@ -141,7 +141,7 @@ the <code>document</code> non-terminal.</p>
                   <tr>
                     <td class="fix nt"></td>
                     <td class="fix op">|</td>
-                    <td class="fix ex">signed_byte(8) e_name signed_byte(1)</td>
+                    <td class="fix ex">signed_byte(8) e_name unsigned_byte(1)</td>
                     <td>Boolean - true</td>
                   </tr>
                   <tr>
@@ -233,7 +233,7 @@ the <code>document</code> non-terminal.</p>
                     <td class="fix op">::=</td>
                     <td class="fix ex">int32 (byte*) unsigned_byte(0)</td>
                     <td >String - The int32 is the number bytes in the
-                    (byte*) + 1 (for the trailing null byte). The (byte*) is
+                    (byte*) plus one for the trailing null byte. The (byte*) is
                     zero or more UTF-8 encoded characters.</td>
                   </tr>
                   <tr class="section">
@@ -326,21 +326,20 @@ the <code>document</code> non-terminal.</p>
   <li>The BSON "binary" or "BinData" datatype is used to represent
   arrays of bytes. It is somewhat analogous to the Java notion of a
   ByteArray. BSON binary values have a <em>subtype</em>. This is used to
-  indicate what kind of data is in the byte array. Subtypes from zero to
+  indicate what kind of data is in the byte array. Subtypes from 0 to
   127 are predefined or reserved. Subtypes from 128 to 255 are
   user-defined.
   <ul>
     <li><code>unsigned_byte(2)</code> Binary (Old) - This used to be the default
-    subtype, but was deprecated in favor of the
-    <code>unsigned_byte(0)</code> type.
-    Drivers and tools should be sure to handle <code>signed_byte(2)</code>
+    subtype, but was deprecated in favor of subtype 0.
+    Drivers and tools should be sure to handle subtype 2
     appropriately. The structure of the binary data (the byte* array in
     the binary non-terminal) must be an int32 followed by a (byte*). The
     int32 is the number of bytes in the repetition.</li>
     <li><code>unsigned_byte(3)</code> UUID (Old) - This used to be the UUID subtype,
-    but was deprecated in favor of the <code>signed_byte(4)</code> type. Drivers
+    but was deprecated in favor of subtype 4. Drivers
     and tools for languages with a native UUID type should handle
-    the <code>unsigned_byte(3)</code> type appropriately.</li>
+    subtype 3 appropriately.</li>
     <li><code>unsigned_byte(128)&mdash;unsigned_byte(255)</code> User defined subtypes. The binary data can be anything.</li>
   </ul>
   </li>

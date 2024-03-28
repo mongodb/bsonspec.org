@@ -343,11 +343,10 @@
     <li>Max key - Special type which compares higher than all other possible BSON element values.</li>
     <li>Generic binary subtype - This is the most commonly used binary subtype and should be the 'default' for drivers
       and tools.</li>
-    <li>Compressed BSON Column - This data type permits compact storage
-      by using BSON type-specific delta or delta-of-delta compression
-      stored in Simple-8b blocks, which uses few bits per element. This
-      type also enables efficient encoding for sparse arrays containing
-      missing values.</li>
+    <li>Compressed BSON Column - Compact storage of BSON data. This data
+      type uses delta and delta-of-delta compression and
+      run-length-encoding for efficient element storage. Also has an
+      encoding for sparse arrays containing missing values.</li>
     <li>The BSON "binary" or "BinData" datatype is used to represent
       arrays of bytes. It is somewhat analogous to the Java notion of a
       ByteArray. BSON binary values have a <em>subtype</em>. This is used to

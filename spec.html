@@ -304,7 +304,7 @@
           <td class="fix op">|</td>
           <td class="fix ex">unsigned_byte(6)</td>
           <td><a
-              href="https://github.com/mongodb/specifications/blob/master/source/client-side-encryption/subtype6.md">Encrypted
+              href="https://github.com/mongodb/specifications/blob/master/source/bson-binary-encrypted/binary-encrypted.md">Encrypted
               BSON value</a></td>
         </tr>
         <tr>
@@ -323,7 +323,7 @@
           <td class="fix nt"></td>
           <td class="fix op">|</td>
           <td class="fix ex">unsigned_byte(9)</td>
-          <td><a href="https://www.mongodb.com/docs/manual/reference/bson-types/#binary-data">Vector</a></td>
+          <td>Vector</td>
         </tr>
         <tr>
           <td class="fix nt"></td>
@@ -358,7 +358,13 @@
       type uses delta and delta-of-delta compression and
       run-length-encoding for efficient element storage. Also has an
       encoding for sparse arrays containing missing values.</li>
-    <li>The BSON "binary" or "BinData" datatype is used to represent
+    <li>Vector - A densely packed array of numbers, all of the same
+      type. This subtype supports data types that are related to the <a
+        href="https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-overview/">Atlas
+        Vector Search</a> feature, such as <code>uint1</code>,
+      <code>int8</code>, and <code>f32</code>.
+    </li>
+    <li>The BSON "binary" or <code>BinData</code> datatype is used to represent
       arrays of bytes. It is somewhat analogous to the Java notion of a
       ByteArray. BSON binary values have a <em>subtype</em>. This is used to
       indicate what kind of data is in the byte array. Subtypes from 0 to

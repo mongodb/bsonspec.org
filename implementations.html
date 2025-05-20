@@ -28,7 +28,7 @@
                     <ul>
                         <li>
                             <p><a href="https://github.com/nearprotocol/assemblyscript-bson">assemblyscript-bson</a> -
-                                BSON encoder / decoder library written in AssemblyScript, compiles to WebAssembly.
+                                A BSON encoder / decoder library written in AssemblyScript, compiles to WebAssembly.
                                 Can be used to enable transfer of complex objects between JavaScript and WebAssembly.
                                 Originally written to support smart contract development in WebAssembly.
                         </li>
@@ -39,32 +39,27 @@
                     <ul>
                         <li>
                             <p><a href="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson/">libbson</a>
-                                - A library providing
-                                useful routines related to building, parsing, and iterating BSON documents. Used by
-                                the cross-platform libmongoc client library that provides a base for MongoDB drivers
-                                in higher-level languages.
-                        </li>
-                        <li>
-                            <p><a href="https://github.com/chergert/mongo-glib/tree/master/mongo-glib">Mongo-GLib</a> -
-                                A library written in C to communicate with the MongoDB database in an asynchronous
-                                fashion.
-                                Even though the library is written in C, it can be used from higher level libraries such
-                                as
-                                Python and JavaScript through the use of GObject introspection.
+                                - A library providing useful routines
+                                related to building, parsing, and
+                                iterating BSON documents. Used by the
+                                cross-platform libmongoc client library
+                                that provides a base for MongoDB drivers
+                                in higher-level languages such as PHP.
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <p>C# / .NET</p>
+                    <p>C#/.NET</p>
                     <ul>
                         <li>
-                            <p><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson">Newtonsoft.Json.Bson</a>
+                            <p><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson">Json.NET</a>
                                 - Adds support for reading and writing BSON to the popular Json.NET library.
                         </li>
                         <li>
                             <p><a
                                     href="https://github.com/mongodb/mongo-csharp-driver/tree/master/src/MongoDB.Bson">MongoDB.Bson</a>
-                                - Included with the official MongoDB C#/.NET driver.
+                                - The BSON library included with the
+                                official MongoDB C#/.NET driver.
                         </li>
                         <li>
                             <p><a href="https://github.com/karlseguin/Metsys.Bson">Metsys.Bson</a>
@@ -76,7 +71,8 @@
                     <p>C++</p>
                     <ul>
                         <li>
-                            <p>The <a href="https://mongodb.github.io/mongo-cxx-driver/">MongoDB C++ Driver Library</a>
+                            <p>The <a href="https://www.mongodb.com/docs/languages/cpp/cpp-driver/current/">MongoDB
+                                    C++ Driver Library</a>
                                 - The official
                                 MongoDB C++ driver includes a robust and well tested BSON implementation. You can use
                                 just the BSON
@@ -88,7 +84,7 @@
                                 implementation forked from the MongoDB C++ driver, with the non-BSON code pruned away.
                         </li>
                         <li>
-                            <p><a href="https://github.com/dwight/bson-cxx">github.com/dwight/bson-cxx</a> - Yet another
+                            <p><a href="https://github.com/dwight/bson-cxx">github.com/dwight/bson-cxx</a> - Another
                                 C++ BSON
                                 implementation originating from the MongoDB C++ driver. Non-BSON code was eliminated,
                                 Endian-awareness
@@ -106,7 +102,7 @@
                                 <a href="https://oatpp.io/">Oat++ applications</a>.
                         </li>
                         <li>
-                            <p><a href="https://github.com/danielaparker/jsoncons">jsoncons</a> - A C++ header-only
+                            <p><a href="https://github.com/danielaparker/jsoncons">JSONCONS</a> - A C++ header-only
                                 library for
                                 constructing JSON and JSON-like data formats including BSON, supports encode/decode of
                                 BSON byte string.
@@ -146,9 +142,6 @@
                                 and diffing these file types, and an explorer previewer plugin.
                         </li>
                         <li>
-                            <p><a href="https://github.com/pebbie/pebongo/blob/master/_bson.pas">pebongo</a>
-                        </li>
-                        <li>
                             <p><a href="https://github.com/stijnsanders/TMongoWire#bsontoolspas">TMongoWire</a>
                         </li>
                         <li>
@@ -160,25 +153,12 @@
                     <p>Elixir</p>
                     <ul>
                         <li>
-                            <p><a href="https://github.com/checkiz/elixir-bson">elixir-bson</a>
-                                - BSON implementation used by the elixir-mongo MongoDB driver.
+                            <p><a href="https://hex.pm/packages/cyanide">cyanide</a>
+                                - BSON implementation for Elixir.
                         </li>
                         <li>
                             <p><a href="https://github.com/sean-lin/elixir-cbson">elixir-cbson</a>
-                                - BSON NIF for Elixir/Erlang language
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <p>Erlang</p>
-                    <ul>
-                        <li>
-                            <p><a
-                                    href="https://github.com/JacobVorreuter/emongo/blob/master/src/emongo_bson.erl">emongo_bson</a>
-                                - Included with the emongo driver for Erlang.
-                        </li>
-                        <li>
-                            <p><a href="https://github.com/wpntv/erlmongo/">Erlmongo driver</a>
+                                - BSON NIF for Elixir/Erlang.
                         </li>
                     </ul>
                 </li>
@@ -186,8 +166,8 @@
                     <p>Factor</p>
                     <ul>
                         <li>
-                            <p><a href="https://github.com/factor/factor/tree/master/extra/bson">bson.reader and
-                                    bson.writer</a>
+                            <p><a href="https://github.com/factor/factor/tree/master/extra/bson">BSON
+                                    reader and writer.</a>
                         </li>
                     </ul>
                 </li>
@@ -201,24 +181,11 @@
                     </ul>
                 </li>
                 <li>
-                    <p>Gleam</p>
-                    <ul>
-                        <li>
-                            <p><a href="https://github.com/massivefermion/gleam_bson">gleam_bson</a>
-                                - gleam implementation of the bson spec to support gleam_mongo
-                        </li>
-                        <li>
-                            <p><a href="https://github.com/massivefermion/gleam_mongo">gleam_mongo</a> - mongodb driver
-                                for gleam
-                        </li>
-                    </ul>
-                </li>
-                <li>
                     <p>Go</p>
                     <ul>
                         <li>
-                            <p><a href="https://github.com/mongodb/mongo-go-driver/">mongo-go-driver</a> - Official
-                                MongoDB Go driver.
+                            <p><a href="https://github.com/mongodb/mongo-go-driver/">mongo-go-driver</a>
+                                - The official MongoDB Go driver.
                         </li>
                         <li>
                             <p><a href="https://github.com/mongodb/mongo-go-driver/tree/master/bson">bson</a>
@@ -233,7 +200,8 @@
                     <p>Haskell</p>
                     <ul>
                         <li>
-                            <p><a href="http://hackage.haskell.org/package/bson">bson package</a>
+                            <p><a href="http://hackage.haskell.org/package/bson">bson
+                                    package</a> - BSON implementation for Haskell.
                         </li>
                     </ul>
                 </li>
@@ -271,7 +239,7 @@
                     <ul>
                         <li>
                             <p><a href="https://github.com/MikeInnes/BSON.jl">BSON.jl</a>
-                                - A Julia package for working with the Binary JSON serialisation format.
+                                - A Julia package for working with the Binary JSON serialization format.
                         </li>
                     </ul>
                 </li>
@@ -293,7 +261,7 @@
                         </li>
                         <li>
                             <p><a href="https://github.com/cloudwu/lua-bson">lua-bson</a>
-                                - A simple BSON library for Lua (implemented in C).</p>
+                                - A simple BSON library for Lua implemented in C.</p>
                         </li>
                     </ul>
                 </li>
@@ -330,10 +298,6 @@
                     <p>Perl</p>
                     <ul>
                         <li>
-                            <p><a href="http://search.cpan.org/dist/MongoDB/lib/MongoDB/BSON.pm">MongoDB::BSON</a>
-                                - Included with the official Perl driver for MongoDB.
-                        </li>
-                        <li>
                             <p><a href="http://search.cpan.org/dist/Mango/lib/Mango/BSON.pm">Mango::BSON</a>
                                 - Included with Mango, a Pure-Perl non-blocking I/O MongoDB driver.
                         </li>
@@ -346,6 +310,10 @@
                             <p><a href="https://github.com/mongodb/mongo-php-driver">BSON</a>
                                 - Interface included with the official MongoDB PHP driver.
                                 Builds on the <i>libbson</i> C library.
+                                To learn more about working with BSON in
+                                the PHP library, see the <a
+                                    href="https://www.mongodb.com/docs/php-library/current/data-formats/modeling-bson-data/">BSON
+                                    documentation</a>.
                         </li>
                     </ul>
                 </li>
@@ -371,7 +339,9 @@
                         </li>
                         <li>
                             <p><a href="https://github.com/seprich/py-bson-rpc">py-bson-rpc</a>
-                                - A Python library for JSON-RPC 2.0 and BSON-RPC on sockets (TCP and TCP+TLS).
+                                - A Python library for JSON-RPC 2.0 and
+                                BSON-RPC on sockets (TCP and TCP+TLS).
+                                This library was archived in December 2024.
                         </li>
                     </ul>
                 </li>
@@ -381,7 +351,7 @@
                         <li>
                             <p><a href="http://rubygems.org/gems/bson">bson</a>
                                 (with <a href="http://rubygems.org/gems/bson_ext">optional C extension</a>)
-                                - A full featured BSON specification implementation used by the official
+                                - A fully featured BSON specification implementation used by the official
                                 MongoDB Ruby driver.
                         </li>
                     </ul>
@@ -391,7 +361,8 @@
                     <ul>
                         <li>
                             <p><a href="https://crates.io/crates/bson">bson</a>
-                                - Encoding and decoding support for BSON built using the Serde framework.
+                                - Official encoding and decoding support for BSON
+                                built using the Serde framework.
                         </li>
                     </ul>
                 </li>
@@ -400,7 +371,7 @@
                     <ul>
                         <li>
                             <p><a href="https://github.com/mongodb/mongo-scala-driver">MongoDB Scala driver</a>
-                                - Official MongoDB driver.</p>
+                                - Official MongoDB driver for Scala.</p>
                         </li>
                         <li>
                             <p><a href="http://reactivemongo.org">ReactiveMongo</a>
@@ -476,14 +447,16 @@
             <li>
                 <p><a href="https://github.com/bauman/bsonsearch">bsonsearch</a>
                     - BSON matching engine to perform offline document comparisons
-                    without a MongoDB server. C dynamic library with Python wrapper.
+                    without a MongoDB server. This project uses a C
+                    dynamic library with Python wrapper.
                 </p>
             </li>
         </ul>
     </div>
     <p class="clear">
         If you know of other BSON implementations or projects
-        using BSON, please <a href="https://github.com/mongodb/bsonspec.org">add them</a>.
+        that use BSON, please create a documentation (DOCS) ticket in the
+        <a href="https://jira.mongodb.org/">MongoDB JIRA server</a>.
     </p>
 
 

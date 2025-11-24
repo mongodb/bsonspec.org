@@ -358,10 +358,15 @@
       type uses delta and delta-of-delta compression and
       run-length-encoding for efficient element storage. Also has an
       encoding for sparse arrays containing missing values.</li>
-    <li>Vector - A densely packed array of numbers, all of the same
-      type. This subtype supports the packed
-      binary (1-bit unsigned <code>int</code>), signed 8-bit
-      <code>int</code>, and 32-bit <code>float</code> element types.
+    <li>Vector - A densely packed array of numeric values. All values must be of the same type.
+      Vectors are useful for bitmaps, machine learning, scientific computations, or other
+      use cases that require optimized representation of numeric values.
+      Vectors support the following types:
+    <ul>  
+      <li>Packed binary (1-bit unsigned <code>int</code>)</li>  
+      <li>Signed 8-bit integer (<code>int</code>)</li>  
+      <li>32-bit floating point (<code>float</code>)</li>  
+    </ul>  
     </li>
     <li>The BSON "binary" or <code>BinData</code> datatype is used to represent
       arrays of bytes. It is somewhat analogous to the Java notion of a

@@ -343,67 +343,68 @@
 
 
   <h3>Other Data Types</h3>
-  <table>  
-      <tr>  
-          <th>Data Type</th>  
-          <th>Description</th>  
-      </tr>  
-      <tr>  
-          <td>Array</td>  
-          <td>The document for an array is a normal BSON document with integer values for the keys, starting with 0 and continuing sequentially. For example, the array ['red', 'blue'] would be encoded as the document {'0': 'red', '1': 'blue'}. The keys must be in ascending numerical order.</td>  
-      </tr>  
-      <tr>  
-          <td>UTC datetime</td>  
-          <td>The int64 is UTC milliseconds since the Unix epoch.</td>  
-      </tr>  
-      <tr>  
-          <td>Timestamp</td>  
-          <td>Special internal type used by MongoDB replication and sharding. First 4 bytes are an increment, second 4 are a timestamp.</td>  
-      </tr>  
-      <tr>  
-          <td>Min key</td>  
-          <td>Special type which compares lower than all other possible BSON element values.</td>  
-      </tr>  
-      <tr>  
-          <td>Max key</td>  
-          <td>Special type which compares higher than all other possible BSON element values.</td>  
-      </tr>  
-      <tr>  
-          <td>Generic binary subtype</td>  
-          <td>This is the most commonly used binary subtype and should be the 'default' for drivers and tools.</td>  
-      </tr>  
-      <tr>  
-          <td>Compressed BSON column</td>  
-          <td>Compact storage of BSON data. This data type uses delta and delta-of-delta compression and run-length-encoding for efficient element storage. Also has an encoding for sparse arrays containing missing values.</td>  
-      </tr>  
-      <tr>  
-          <td>Vector</td>  
-          <td>  
-              <p>Dense array of mostly non-zero numeric values, effectively used to represent data in artificial intelligence, machine learning, semantic search, computer vision, and natural language processing applications.</p>
-              <p>All values within the vector must be of the same type. Vectors support the following types:</p>
-              <ul>  
-                  <li>Packed binary (1-bit unsigned <code>int</code>)</li>  
-                  <li>Signed 8-bit integer (<code>int</code>)</li>  
-                  <li>32-bit floating point (<code>float</code>)</li>  
-              </ul>  
-          </td>  
-      </tr>  
-      <tr>  
-          <td>BSON "binary" or <code>BinData</code></td>  
-          <td>  
-              Used to represent arrays of bytes. It is somewhat analogous to the Java notion of a ByteArray. BSON binary values have a <em>subtype</em>. This is used to indicate what kind of data is in the byte array. Subtypes from 0 to 127 are predefined or reserved. Subtypes from 128 to 255 are user-defined.  
-              <ul>  
-                  <li><code>unsigned_byte(2)</code> Binary (Old) - This used to be the default subtype, but was deprecated in favor of subtype 0. Drivers and tools should properly handle subtype 2. The structure of the binary data must be an <code>int32</code> followed by a <code>byte*</code>. The <code>int32</code> is the number of bytes in the repetition.</li>  
-                  <li><code>unsigned_byte(3)</code> UUID (Old) - This used to be the UUID subtype, but was deprecated in favor of subtype 4. Drivers and tools for languages with a native UUID type should properly handle subtype 3.</li>  
-                  <li><code>unsigned_byte(128)&mdash;unsigned_byte(255)</code> User-defined subtypes. The binary data can be anything.</li>  
-              </ul>  
-          </td>  
-      </tr>  
-      <tr>  
-          <td>Code with scope</td>  
-          <td><em>Deprecated.</em> The <code>int32</code> is the length in bytes of the entire <code>code_w_s</code> value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</td>  
-      </tr>  
-  </table>  
+<table style="border-collapse: collapse; width: 100%; border: 1px solid black;">  
+    <tr>  
+        <th style="border: 1px solid black; padding: 8px; text-align: left;">Data Type</th>  
+        <th style="border: 1px solid black; padding: 8px; text-align: left;">Description</th>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Array</td>  
+        <td style="border: 1px solid black; padding: 8px;">The document for an array is a normal BSON document with integer values for the keys, starting with 0 and continuing sequentially. For example, the array ['red', 'blue'] would be encoded as the document {'0': 'red', '1': 'blue'}. The keys must be in ascending numerical order.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">UTC datetime</td>  
+        <td style="border: 1px solid black; padding: 8px;">The int64 is UTC milliseconds since the Unix epoch.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Timestamp</td>  
+        <td style="border: 1px solid black; padding: 8px;">Special internal type used by MongoDB replication and sharding. First 4 bytes are an increment, second 4 are a timestamp.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Min key</td>  
+        <td style="border: 1px solid black; padding: 8px;">Special type which compares lower than all other possible BSON element values.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Max key</td>  
+        <td style="border: 1px solid black; padding: 8px;">Special type which compares higher than all other possible BSON element values.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Generic binary subtype</td>  
+        <td style="border: 1px solid black; padding: 8px;">This is the most commonly used binary subtype and should be the 'default' for drivers and tools.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Compressed BSON column</td>  
+        <td style="border: 1px solid black; padding: 8px;">Compact storage of BSON data. This data type uses delta and delta-of-delta compression and run-length-encoding for efficient element storage. Also has an encoding for sparse arrays containing missing values.</td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Vector</td>  
+        <td style="border: 1px solid black; padding: 8px;">  
+            <p>Dense array of mostly non-zero numeric values, effectively used to represent data in artificial intelligence, machine learning, semantic search, computer vision, and natural language processing applications.</p>  
+            <p>All values within the vector must be of the same type. Vectors support the following types:</p>  
+            <ul>  
+                <li>Packed binary (1-bit unsigned <code>int</code>)</li>  
+                <li>Signed 8-bit integer (<code>int</code>)</li>  
+                <li>32-bit floating point (<code>float</code>)</li>  
+            </ul>  
+        </td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">BSON "binary" or <code>BinData</code></td>  
+        <td style="border: 1px solid black; padding: 8px;">  
+            Used to represent arrays of bytes. It is somewhat analogous to the Java notion of a ByteArray. BSON binary values have a <em>subtype</em>. This is used to indicate what kind of data is in the byte array. Subtypes from 0 to 127 are predefined or reserved. Subtypes from 128 to 255 are user-defined.  
+            <ul>  
+                <li><code>unsigned_byte(2)</code> Binary (Old) - This used to be the default subtype, but was deprecated in favor of subtype 0. Drivers and tools should properly handle subtype 2. The structure of the binary data must be an <code>int32</code> followed by a <code>byte*</code>. The <code>int32</code> is the number of bytes in the repetition.</li>  
+                <li><code>unsigned_byte(3)</code> UUID (Old) - This used to be the UUID subtype, but was deprecated in favor of subtype 4. Drivers and tools for languages with a native UUID type should properly handle subtype 3.</li>  
+                <li><code>unsigned_byte(128)&mdash;unsigned_byte(255)</code> User-defined subtypes. The binary data can be anything.</li>  
+            </ul>  
+        </td>  
+    </tr>  
+    <tr>  
+        <td style="border: 1px solid black; padding: 8px;">Code with scope</td>  
+        <td style="border: 1px solid black; padding: 8px;"><em>Deprecated.</em> The <code>int32</code> is the length in bytes of the entire <code>code_w_s</code> value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</td>  
+    </tr>  
+</table>  
+  
 
 
   <script type="text/javascript">

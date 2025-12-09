@@ -253,7 +253,7 @@
           <td class="fix nt">binary</td>
           <td class="fix op">::=</td>
           <td class="fix ex">int32 subtype (byte*)</td>
-          <td>BSON binary or <code>BinData</code>. An array of bytes, similar to a Java <code>ByteArray</code>. <a href="#more-binary">See below for more information.</a></td>
+          <td>BSON binary or <code>BinData</code>. An array of bytes, similar to a Java <code>ByteArray</code>. The <code>int32</code> is the number of bytes in the <code>(byte*)</code>. The <em>subtype</em> indicates the kind of data in the byte array.</td>
         </tr>
         <tr class="section">
           <td class="fix nt">subtype</td>
@@ -271,7 +271,7 @@
           <td class="fix nt"></td>
           <td class="fix op">|</td>
           <td class="fix ex">unsigned_byte(2)</td>
-          <td>Binary (old). <em>Deprecated</em> in favor of subtype 0. <a href="#more-binary-old">See below for more information.</a></td>
+          <td>Binary (old). <em>Deprecated</em> in favor of subtype 0. Drivers and tools should properly handle this subtype. <a href="#more-binary-old">See below for more information.</a></td>
         </tr>
         <tr>
           <td class="fix nt"></td>
@@ -315,19 +315,19 @@
           <td class="fix nt"></td>
           <td class="fix op">|</td>
           <td class="fix ex">unsigned_byte(9)</td>
-          <td>Vector</td><a href="#more-vector">See below for more information.</a></td>
+          <td>Vector. <a href="#more-vector">See below for more information.</a></td>
         </tr>
         <tr>
           <td class="fix nt"></td>
           <td class="fix op">|</td>
           <td class="fix ex">unsigned_byte(128)&mdash;unsigned_byte(255)</td>
-          <td>User-defined</td>
+          <td>User-defined subtypes</td>
         </tr>
         <tr class="section">
           <td class="fix nt">code_w_s</td>
           <td class="fix op">::=</td>
           <td class="fix ex">int32 string document</td>
-          <td>Code with scope. <em>Deprecated.</em></td>
+          <td>Code with scope. <em>Deprecated.</em> The <code>int32</code> is the length in bytes of the entire <code>code_w_s</code> value. The <code>string</code> is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</td>
         </tr>
       </table>
     </div>
@@ -336,6 +336,10 @@
 
   <h3>More Information</h3>
   <table style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+      <tr>  
+          <th style="border: 1px solid black; padding: 8px; text-align: left;">Non-terminal</th>  
+          <th style="border: 1px solid black; padding: 8px; text-align: left;">Description</th>  
+      </tr>  
         <tr id="more-regex">  
           <td style="border: 1px solid black; padding: 8px;">Regular expression</td>  
           <td style="border: 1px solid black; padding: 8px;">
@@ -352,18 +356,9 @@
             </ul> 
           </td>
       </tr>
-      <tr id="more-binary">
-          <td style="border: 1px solid black; padding: 8px;">Binary</td>  
-          <td style="border: 1px solid black; padding: 8px;">The <code>int32</code> is the number of bytes in the <code>(byte*)</code>. The <em>subtype</em> indicates the kind of data in the byte array.</td>
-      </tr>
-      <tr>  
-          <th style="border: 1px solid black; padding: 8px; text-align: left;">Non-terminal</th>  
-          <th style="border: 1px solid black; padding: 8px; text-align: left;">Description</th>  
-      </tr>  
         <tr id="more-binary-old">
           <td style="border: 1px solid black; padding: 8px;">Binary (old)</td>  
           <td style="border: 1px solid black; padding: 8px;">  
-          Subtype 2 was the default binary subtype before it was deprecated. Drivers and tools should properly handle this subtype.
           The structure of the binary data must be an <code>int32</code> followed by a <code>byte*</code>. The <code>int32</code> is the number of bytes in the repetition.
           </td>  
         </tr>
@@ -383,10 +378,6 @@
               </ul>  
           </td>  
       </tr> 
-        <tr id="more-codews">  
-          <td style="border: 1px solid black; padding: 8px;">Code with scope</td>  
-          <td style="border: 1px solid black; padding: 8px;">The <code>int32</code> is the length in bytes of the entire <code>code_w_s</code> value. The string is JavaScript code. The document is a mapping from identifiers to values, representing the scope in which the string should be evaluated.</td>  
-      </tr>  
   </tr>
 
   <script type="text/javascript">

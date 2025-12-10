@@ -336,19 +336,19 @@
 
   <h3>More Information</h3>
   <table style="border-collapse: collapse; width: 100%; border: 1px solid black;">
-      <tr>  
-          <th style="border: 1px solid black; padding: 8px; text-align: left;">Type</th>  
+      <tr>
+          <th style="border: 1px solid black; padding: 8px; text-align: left;">Type</th>
           <th style="border: 1px solid black; padding: 8px; text-align: left;">Description</th>
-      </tr>  
-      <tr id="more-array">
-          <td style="border: 1px solid black; padding: 8px;">Array</td>  
-          <td style="border: 1px solid black; padding: 8px;">
-            A BSON document with integer values for the keys, starting at 0 and continuing sequentially. 
-            For example, the array <code>['red', 'blue']</code> encodes as the document <code>{'0': 'red', '1': 'blue'}</code>.
-          </td>  
       </tr>
-        <tr id="more-regex">  
-          <td style="border: 1px solid black; padding: 8px;">Regular expression</td>  
+      <tr id="more-array">
+          <td style="border: 1px solid black; padding: 8px;">Array</td>
+          <td style="border: 1px solid black; padding: 8px;">
+            A BSON document with integer values for the keys, starting at 0 and continuing sequentially.
+            For example, the array <code>['red', 'blue']</code> encodes as the document <code>{'0': 'red', '1': 'blue'}</code>.
+          </td>
+      </tr>
+        <tr id="more-regex">
+          <td style="border: 1px solid black; padding: 8px;">Regular expression</td>
           <td style="border: 1px solid black; padding: 8px;">
             <p>The first <code>cstring</code> is the regex
             pattern. The second <code>cstring</code> is the regex options string.</p>
@@ -360,32 +360,32 @@
               <li><code>s</code> enables <i>dotall</i> mode ("." matches everything)</li>
               <li><code>x</code> enables verbose mode</li>
               <li><code>u</code> enables "\w", "\W", etc. to match Unicode</li>
-            </ul> 
+            </ul>
           </td>
       </tr>
         <tr id="more-binary-old">
-          <td style="border: 1px solid black; padding: 8px;">Binary (old)</td>  
-          <td style="border: 1px solid black; padding: 8px;">  
+          <td style="border: 1px solid black; padding: 8px;">Binary (old)</td>
+          <td style="border: 1px solid black; padding: 8px;">
           The structure of the binary data must be an <code>int32</code> followed by a <code>byte*</code>. The <code>int32</code> is the number of bytes in the repetition.
-          </td>  
+          </td>
         </tr>
-        <tr id="more-compressed">  
-          <td style="border: 1px solid black; padding: 8px;">Compressed BSON column</td>  
-          <td style="border: 1px solid black; padding: 8px;">This data type uses delta and delta-of-delta compression and run-length-encoding for efficient element storage. It also has an encoding for sparse arrays containing missing values.</td>  
-        </tr> 
-        <tr id="more-vector">  
-          <td style="border: 1px solid black; padding: 8px;">Vector</td>  
-          <td style="border: 1px solid black; padding: 8px;">  
-              <p>Dense array of numeric values, effectively used to represent data in artificial intelligence, machine learning, semantic search, computer vision, and natural language processing applications.</p>  
-              <p>All values within the vector must be of the same type. Vectors support the following types:</p>  
-              <ul>  
-                  <li>Packed binary (1-bit unsigned <code>int</code>)</li>  
-                  <li>Signed 8-bit integer (<code>int</code>)</li>  
-                  <li>32-bit floating point (<code>float</code>)</li>  
+        <tr id="more-compressed">
+          <td style="border: 1px solid black; padding: 8px;">Compressed BSON column</td>
+          <td style="border: 1px solid black; padding: 8px;">This data type uses delta and delta-of-delta compression and run-length-encoding for efficient element storage. It also has an encoding for sparse arrays containing missing values.</td>
+        </tr>
+        <tr id="more-vector">
+          <td style="border: 1px solid black; padding: 8px;">Vector</td>
+          <td style="border: 1px solid black; padding: 8px;">
+              <p>Dense array of numeric values stored in a binary format efficient for storage and retrieval. Vectors are effectively used to represent data in artificial intelligence, machine learning, semantic search, computer vision, and natural language processing applications.</p>
+              <p>All values within the vector must be of the same type. Vectors support the following types:</p>
+              <ul>
+                  <li>Packed binary (1-bit unsigned <code>int</code>)</li>
+                  <li>Signed 8-bit integer (<code>int</code>)</li>
+                  <li>32-bit floating point (<code>float</code>)</li>
               </ul>
               <p>For more information about BSON vectors, see the <a href="https://github.com/mongodb/specifications/blob/master/source/bson-binary-vector/bson-binary-vector.md">BSON Binary Subtype 9</a> specification document.</p>
-          </td>  
-      </tr> 
+          </td>
+      </tr>
   </tr>
 
   <script type="text/javascript">
